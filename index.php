@@ -11,10 +11,6 @@
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-
-
-	<base href="/"/>
 	<meta charset="utf-8" />
 	<!--meta name="description" content="A custom theme for the Kern Valley Sun Wordpress site." />
 	<meta name="keywords" content="Wordpress theme, KV Sun, flex" /-->
@@ -39,8 +35,8 @@
  	<meta name="robots" content="index,noarchive">
 	
 	
-		<link rel="apple-touch-icon" sizes="any" href="/images/sun-icons/any.svg" />
-	<link rel="icon" sizes="any" href="/images/sun-icons/any.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" sizes="any" href="<?=get_template_directory_uri()?>/images/sun-icons/any.svg" />
+	<link rel="icon" sizes="any" href="/<?=get_template_directory_uri()?>images/sun-icons/any.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/16.png" />
 	<link rel="icon" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/16.png" type="image/png" />
 		<link rel="apple-touch-icon" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/32.png" />
@@ -51,7 +47,7 @@
 	<link rel="icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/144.png" type="image/png" />
 		<link rel="apple-touch-icon" sizes="256x256" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/256.png" />
 	<link rel="icon" sizes="256x256" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/256.png" type="image/png" />
-		<link rel="manifest" href="/kernvelly/wp-content/themes/bresponzive/manifest.json" />
+		<link rel="manifest" href="<?=get_template_directory_uri()?>/manifest.json" />
 
 <?php global $bresponZive_tpcrn_data;?>
 <title >
@@ -209,7 +205,7 @@ function logoutConfirm(){
 </div>
 	<!-- Slider start ---->
 	<div class="slide-top">
-	<img src ="/wp-content/themes/bresponzive/images/sun.svg" />
+	<img src ="<?=get_template_directory_uri()?>/wp-content/themes/bresponzive/images/sun.svg" />
 	</div>
 			<?php   
 		/*if(isset($bresponZive_tpcrn_data['offline_feat_slide'])) { if($bresponZive_tpcrn_data['offline_feat_slide'] =='1')  include_once('includes/flex-slider.php'); } */?>
