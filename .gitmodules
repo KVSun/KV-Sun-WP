@@ -1,0 +1,3 @@
+[submodule "images/sun-icons"]
+	path = images/sun-icons
+	url = git://github.com/KVSun/sun-icons.git
