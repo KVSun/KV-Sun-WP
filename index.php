@@ -1,20 +1,20 @@
-<?php //get_header();  ?>
-
-<!------------------------------------ Custom Header function Start 2016-05-17  --------------------------->
-
 <!DOCTYPE html>
-
-<html <?php html_schema(); ?> <?php language_attributes(); ?>>
+<?php
+	ob_start();
+	set_include_path(__DIR__ . DIRECTORY_SEPARATOR . 'classes' . PATH_SEPARATOR . get_include_path());
+	spl_autoload_register('spl_autoload');
+	$console = \shgysk8zer0\Core\Console::getInstance();
+	$console->asErrorHandler();
+	$console->asExceptionHandler();
+	$timer = new \shgysk8zer0\Core\Timer();
+?>
+<html <?php html_schema(); language_attributes(); ?>>
 <head>
 
 <!-- Meta info -->
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-
-
-	<base href="/"/>
 	<meta charset="utf-8" />
 	<!--meta name="description" content="A custom theme for the Kern Valley Sun Wordpress site." />
 	<meta name="keywords" content="Wordpress theme, KV Sun, flex" /-->
@@ -39,8 +39,8 @@
  	<meta name="robots" content="index,noarchive">
 	
 	
-		<link rel="apple-touch-icon" sizes="any" href="/images/sun-icons/any.svg" />
-	<link rel="icon" sizes="any" href="/images/sun-icons/any.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" sizes="any" href="<?=get_template_directory_uri()?>/images/sun-icons/any.svg" />
+	<link rel="icon" sizes="any" href="/<?=get_template_directory_uri()?>images/sun-icons/any.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/16.png" />
 	<link rel="icon" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/16.png" type="image/png" />
 		<link rel="apple-touch-icon" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/32.png" />
@@ -51,7 +51,7 @@
 	<link rel="icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/144.png" type="image/png" />
 		<link rel="apple-touch-icon" sizes="256x256" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/256.png" />
 	<link rel="icon" sizes="256x256" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/256.png" type="image/png" />
-		<link rel="manifest" href="/kernvelly/wp-content/themes/bresponzive/manifest.json" />
+		<link rel="manifest" href="<?=get_template_directory_uri()?>/manifest.json" />
 
 <?php global $bresponZive_tpcrn_data;?>
 <title >
@@ -103,12 +103,6 @@ function logoutConfirm(){
 .catnav{
   width: 100%;
   background-color:#fff;
-}
-.sticky {
-  padding: 0px 8px;
-  position: fixed !important;
-  top: 0;
-  width: 100%;
 }
 @media only screen and (max-width:1200px) {
 .slide-top{height:82;}
@@ -201,7 +195,7 @@ function logoutConfirm(){
 </div>
 </div>
 
-<div id="catnav" class="secondary mobile-nav container-fluid menu-part" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<div id="catnav" class="secondary sticky mobile-nav container-fluid menu-part" itemscope itemtype="http://schema.org/SiteNavigationElement">
   <?php wp_nav_menu(array('theme_location' => 'mainNav','container'=> '','menu_id'=> 'catmenu','menu_class'=> 'catnav clearfix','fallback_cb' => 'false','depth' => 3)); 
 
 		
@@ -215,7 +209,7 @@ function logoutConfirm(){
 </div>
 	<!-- Slider start ---->
 	<div class="slide-top">
-	<img src ="http://design.insonix.com/kernvelly/wp-content/themes/bresponzive/images/sun.svg" />
+	<img src ="<?=get_template_directory_uri()?>/images/sun-icons/sun.svg" />
 	</div>
 			<?php   
 		/*if(isset($bresponZive_tpcrn_data['offline_feat_slide'])) { if($bresponZive_tpcrn_data['offline_feat_slide'] =='1')  include_once('includes/flex-slider.php'); } */?>
@@ -291,37 +285,8 @@ function logoutConfirm(){
  			<!-- /blocks col -->
  <?php get_sidebar();  ?>
 
- <?php get_footer(); ?>
- 
- 
- <script  src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
- <script>
-	  function arrDuplicates(arr) {
-        return arr.filter((item, index) => {
-            return arr.lastIndexOf(item) !== index
-            && index === arr.indexOf(item);
-        });
-    }
-
-	 
- $(document).ready(function(){
-	 let els = Array.from(document.querySelectorAll('[id]'));
-    let ids = els.map(el => `#${el.id}`);
-    let dups = arrDuplicates(ids);
-
-    console.info(dups);	
-    
-	 //debugger;
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 1){  
-			$('.secondary').addClass("sticky");
-		  }
-		  else{
-			$('.secondary').removeClass("sticky");
-		  }
-		});	
-		
-		console.log($('script[src]:not([async])').map(script => script.src));	
- });
- 
- </script>
+<?php get_footer(); ?>
+<?php
+	$console->log("Loaded in {$timer} ms.");
+	$console->sendLogHeader();
+?>
