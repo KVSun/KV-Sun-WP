@@ -32,4 +32,18 @@
 </div>
 <!--/#Footer -->
 <?php wp_footer(); ?>
+ <script  src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+ <script>
+ $(document).ready(function(){
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 1){
+			$('.secondary').addClass("sticky");
+		  }
+		  else{
+			$('.secondary').removeClass("sticky");
+		  }
+		});
+ });
+
+ </script>
 </body></html>
