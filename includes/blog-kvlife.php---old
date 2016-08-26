@@ -1,0 +1,108 @@
+<style>
+	.day-partition {
+		background: #711C1A;
+		color: #fff;
+		font-size: 14px;
+		font-weight: 700;
+		line-height: 20px;
+		padding: 0 5px;
+		-moz-border-radius: 0 0 4px 4px;
+		-webkit-border-radius: 0 0 4px 4px;
+		border-radius: 0 0 4px 4px;
+	}
+</style>
+
+		<div class="blog-lists-blog clearfix">
+							<div class="blogposts-wrapper clearfix"> 
+  
+		 <?php  
+		 
+			 $query = new WP_Query( 'cat=25' );
+			 //echo '<pre>'; print_r($query);
+			if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
+				<?php 
+		
+				if( $current_date != get_the_date('d-m-Y') ){
+					$tTimeHtml = '<div class="day-partition">'.get_the_date('d M,Y').'</div>';
+					$current_date = get_the_date('d-m-Y');
+				}else{
+					$tTimeHtml = '';
+				}
+				//echo $tTimeHtml;
+				?>
+			<div class="blogposts-inner box-news">
+<ul>	 		
+			<li class="full-left clearfix ">					
+				<div <?php post_class('magbig-thumb');?>>
+						 
+						 
+					  <?php if ( has_post_thumbnail() ) { ?>
+								<a href="<?php if ( ! is_user_logged_in() && ! is_page( 'login' ) ) {
+												echo $r_url = esc_url( home_url( '/login/' ) );
+											}else{
+												the_permalink();
+											} ?>" title="<?php the_title(); ?>" class="post-thumbnail">
+								
+								<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'mag-image'); ?>
+								<img style ="background-image :url(<?php echo $image[0]; ?>);  background-repeat:no-repeat; background-size:cover;  background-position: 57% 5%;" alt="<?php //the_title(); ?>"  />
+ 		 
+ 							</a>
+					  <?php } else { ?>
+							<a href="<?php if ( ! is_user_logged_in() && ! is_page( 'login' ) ) {
+												echo $r_url = esc_url( home_url( '/login/' ) );
+											}else{
+												the_permalink();
+											} ?>" rel="bookmark" title="<?php the_title(); ?>"><img   style ="background-image :url(<?php echo get_template_directory_uri(); ?>/images/default-image.png);background-repeat:no-repeat; background-size:contain;   background-position: 57% center;" s alt="<?php //the_title(); ?>" /></a>
+						<?php } ?>
+						 
+   				</div>
+						 
+				<div class="list-block clearfix">
+					<h3><a href="<?php if ( ! is_user_logged_in() && ! is_page( 'login' ) ) {
+												echo $r_url = esc_url( home_url( '/login/' ) );
+											}else{
+												the_permalink();
+											} ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3> 
+					<span class="meta_comments">  <a href="<?php comments_link(); ?>"><?php comments_number('0 Comment', '1 Comment', '% Comments'); ?></a></span>
+							<div class="post-meta-blog">
+					<!--span class="meta_author"><?php _e('by', 'bresponZive'); ?> <?php the_author_posts_link(); ?></span>
+					<span class="meta_date"><?php _e('On', 'bresponZive'); ?> <?php the_time('F d, Y'); ?></span>
+					<span class="meta_comments">  <a href="<?php comments_link(); ?>"><?php comments_number('0 Comment', '1 Comment', '% Comments'); ?></a></span-->
+					<?php the_excerpt(); ?>
+					</div>
+							
+														
+						
+					<div class="themepacific-read-more"><a class="tpcrn-read-more" href="<?php if ( ! is_user_logged_in() && ! is_page( 'login' ) ) {
+												echo $r_url = esc_url( home_url( '/login/' ) );
+											}else{
+												the_permalink();
+											} ?>" title="<?php the_title(); ?>"><?php _e('Read More','bresponZive');?></a>
+					</div>	
+
+			</div>
+		</li></ul>
+<br class="clear" />	<!--	<div class="pagination clearfix">
+		  <?php //bresponZive_themepacific_tpcrn_pagination();   ?>
+		</div>-->	</div>		
+		
+		<?php endwhile;?>
+		 		 
+		<?php 
+				
+		else: ?>
+					
+				<h2 class="noposts"><?php _e('Sorry, no posts to display!','bresponZive');?> </h2> 
+					
+					
+		  <?php endif; 
+
+		  
+		  ?>
+		 
+	</div>					 <?php wp_reset_query();?>
+					 
+</div>
+	
+		  
+ 
