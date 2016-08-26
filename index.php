@@ -104,12 +104,6 @@ function logoutConfirm(){
   width: 100%;
   background-color:#fff;
 }
-.sticky {
-  padding: 0px 8px;
-  position: fixed !important;
-  top: 0;
-  width: 100%;
-}
 @media only screen and (max-width:1200px) {
 .slide-top{height:82;}
 .menu-part{height:5vh;}
