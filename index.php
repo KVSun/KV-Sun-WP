@@ -305,23 +305,14 @@ function logoutConfirm(){
 
 	 
  $(document).ready(function(){
-	 let els = Array.from(document.querySelectorAll('[id]'));
-    let ids = els.map(el => `#${el.id}`);
-    let dups = arrDuplicates(ids);
-
-    console.info(dups);	
-    
-	 //debugger;
 	$(window).scroll(function() {
-		if ($(this).scrollTop() > 1){  
+		if ($(this).scrollTop() > 1){
 			$('.secondary').addClass("sticky");
 		  }
 		  else{
 			$('.secondary').removeClass("sticky");
 		  }
 		});	
-		
-		console.log($('script[src]:not([async])').map(script => script.src));	
  });
- 
+
  </script>
