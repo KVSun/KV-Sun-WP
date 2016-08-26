@@ -34,16 +34,17 @@
 <?php wp_footer(); ?>
  <script  src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
  <script>
+ if ( !(('CSS' in window) && ('supports' in CSS) && CSS.supports('position', 'sticky'))) {
  $(document).ready(function(){
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1){
-			$('.secondary').addClass("sticky");
+			$('.secondary.sticky').addClass("stuck");
 		  }
 		  else{
-			$('.secondary').removeClass("sticky");
+			$('.secondary.sticky').removeClass("stuck");
 		  }
 		});
  });
-
+}
  </script>
 </body></html>

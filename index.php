@@ -187,7 +187,7 @@ function logoutConfirm(){
 </div>
 </div>
 
-<div id="catnav" class="secondary mobile-nav container-fluid menu-part" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<div id="catnav" class="secondary sticky mobile-nav container-fluid menu-part" itemscope itemtype="http://schema.org/SiteNavigationElement">
   <?php wp_nav_menu(array('theme_location' => 'mainNav','container'=> '','menu_id'=> 'catmenu','menu_class'=> 'catnav clearfix','fallback_cb' => 'false','depth' => 3)); 
 
 		

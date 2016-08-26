@@ -339,20 +339,20 @@ body {
     padding: 7px 10px !important;
 	/*background-color:#F37124!important;*/
 }
-#catnav {
+.secondary {
 	margin: 0;
 	font-size: 12px;
 	min-height: 28px;
 	position: relative;
 }
-#catnav.secondary {
+.secondary {
 	border-top: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 	background: #fff;
 	text-transform: uppercase;
 	z-index:222;
 }
-#catnav ul {
+.secondary.menu-part ul {
 	margin: 0 auto;
 	padding: 0;
 	list-style: none;
@@ -360,7 +360,7 @@ body {
 	border-bottom: 0;
 	text-align: center;
 }
-#catnav ul a {
+.secondary.menu-part ul a {
 	position: relative;
 	display: block;
 	padding: 0 20px;
@@ -386,13 +386,13 @@ body {
 	transition: all 0.2s ease-in-out;
 }
 
-#catnav.secondary ul a {
+.secondary ul a {
 	height: 48px;
 	color: #444;
 	line-height: 48px;
 	font-size: 14px;
 }
-#catnav ul li {
+.secondary ul li {
 	float: left;
 	position: relative;
 	width: auto;
@@ -420,30 +420,30 @@ body {
     margin: 0 2px;
     padding: 0;
 }
-#catnav > .sub-menu {
+.secondary > .sub-menu {
 	margin-left: 0;
 }
-#catnav ul li:first-child #maganav ul a {
+.secondary ul li:first-child #maganav ul a {
 	border-right: none;
 }
-#catnav ul li.current-menu-item a {
+.secondary ul li.current-menu-item a {
 	color: #fff;
 }
 ul.catnav li a {
 	padding: 5px 10px;
 }
-#catnav ul li.current-menu-item, #catnav ul li a:hover {
+.secondary ul li.current-menu-item, .secondary ul li a:hover {
     background: #f37124 none repeat scroll 0 0;
     color: #fff;
     text-decoration: none;
 }
-#catnav.secondary ul li.current-menu-item, #catnav.secondary >ul >li a:hover {
+.secondary ul li.current-menu-item, .secondary >ul >li a:hover {
 	background: #06AFE4;
 }
-#catnav ul li.dropme a {
+.secondary ul li.dropme a {
 	background: #06AFE4;
 }
-#catnav ul ul {
+.secondary ul ul {
 	position: absolute;
 	left: -999em;
 	width: 212px;
@@ -455,8 +455,8 @@ ul.catnav li a {
 	border-bottom: none;
 	box-shadow: 0 0 5px #ccc;
 }
-#catnav ul ul li:last-child{border-bottom:2px solid #6BCBE9;}
-#catnav ul ul a {
+.secondary ul ul li:last-child{border-bottom:2px solid #6BCBE9;}
+.secondary ul ul a {
 	/*width: 198px;*/
 	background-color: #212326;
 	height: 15px;
@@ -467,33 +467,33 @@ ul.catnav li a {
 	border-right: none;
 	width:100%;
 }
-#catnav.secondary ul ul a {
+.secondary ul ul a {
 	padding: 0px 0px 2px 15px;
 	background: #fff none repeat scroll 0 0;
     color: #444;
 }
-#catnav.secondary ul ul a:hover{ background: #06afe4 none repeat scroll 0 0;}
-#catnav ul ul a:hover {
+.secondary ul ul a:hover{ background: #06afe4 none repeat scroll 0 0;}
+.secondary ul ul a:hover {
     background-color: #fff !important;
     color: #06afe4;
 }
-#catnav ul ul ul {
+.secondary ul ul ul {
 	border-top: 0;
 	margin: -44px 0 0 208px;
 }
-#catnav ul li li {
+.secondary ul li li {
 	margin: 0;
 	border: 0;
 	border-bottom: 1px solid #e5e5e5;
 	width:100%;
 }
-#catnav ul li:hover {
+.secondary ul li:hover {
 	position: static;
 }
-#catnav ul li:hover ul ul, #catnav ul li:hover ul ul ul, #catnav ul li:hover ul ul ul ul {
+.secondary ul li:hover ul ul, .secondary ul li:hover ul ul ul, .secondary ul li:hover ul ul ul ul {
 	left: -999em;
 }
-#catnav ul li:hover ul, #catnav ul li li:hover ul, #catnav ul li li li:hover ul, #catnav ul li li li li:hover ul {
+.secondary ul li:hover ul, .secondary ul li li:hover ul, .secondary ul li li li:hover ul, .secondary ul li li li li:hover ul {
 	left: auto;
 }
 #notifybrowser {
@@ -577,8 +577,6 @@ h2.blogpost-wrapper-title, .widget-head {
 	display: block;
 	float: left;
 	margin-bottom: 15px;
-}
-.sticky {
 }
 .sb-post-list-title span {
 	padding-left: 0px;
@@ -1808,7 +1806,7 @@ label {
   }
   .magbig-thumb{width:100%!important;}
   .list-block{padding:10px!important;}
-  #catnav ul ul{background-color:#fff;}
+  .secondary ul ul{background-color:#fff;}
   
 /********************************************************/
  .post.hentry.ivycat-post {
@@ -1931,15 +1929,20 @@ form.pmpro_form label {
 }
 .sticky {
   padding: 0px 8px;
-  position: fixed !important;
   top: 0;
   width: 100%;
 }
+.sticky.stuck {
+	position: fixed;
+}
+@supports (position: sticky) {
+	.sticky {position: sticky;}
+}
 @media only screen and (max-width: 1200px) {
-	#catnav.secondary ul a {
+	.secondary ul a {
   font-size: 10px;
 }
-#catnav ul a {
+.secondary ul a {
     padding: 0 10px;
 	}
 }
@@ -1980,7 +1983,7 @@ form.pmpro_form label {
   overflow: hidden;
   width: 100%;
 }
-#catnav select {
+.secondary.menu-part select {
   border: 2px solid transparent;
   display: block;
   font-size: 13px;
