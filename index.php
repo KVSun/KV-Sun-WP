@@ -215,7 +215,7 @@ function logoutConfirm(){
 </div>
 	<!-- Slider start ---->
 	<div class="slide-top">
-	<img src ="http://design.insonix.com/kernvelly/wp-content/themes/bresponzive/images/sun.svg" />
+	<img src ="/wp-content/themes/bresponzive/images/sun.svg" />
 	</div>
 			<?php   
 		/*if(isset($bresponZive_tpcrn_data['offline_feat_slide'])) { if($bresponZive_tpcrn_data['offline_feat_slide'] =='1')  include_once('includes/flex-slider.php'); } */?>
