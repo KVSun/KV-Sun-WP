@@ -1,7 +1,3 @@
-<?php //get_header();  ?>
-
-<!------------------------------------ Custom Header function Start 2016-05-17  --------------------------->
-
 <!DOCTYPE html>
 
 <html <?php html_schema(); ?> <?php language_attributes(); ?>>
@@ -282,19 +278,3 @@ function logoutConfirm(){
  <?php get_sidebar();  ?>
 
  <?php get_footer(); ?>
- 
- 
- <script  src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
- <script>
- $(document).ready(function(){
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 1){
-			$('.secondary').addClass("sticky");
-		  }
-		  else{
-			$('.secondary').removeClass("sticky");
-		  }
-		});	
- });
-
- </script>
