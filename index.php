@@ -296,14 +296,6 @@ function logoutConfirm(){
  
  <script  src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
  <script>
-	  function arrDuplicates(arr) {
-        return arr.filter((item, index) => {
-            return arr.lastIndexOf(item) !== index
-            && index === arr.indexOf(item);
-        });
-    }
-
-	 
  $(document).ready(function(){
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1){
