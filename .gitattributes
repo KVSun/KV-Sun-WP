@@ -4,6 +4,10 @@
 # Custom for Visual Studio
 *.cs     diff=csharp
 
+# For GPG/PGP encrypted files
+*.gpg    diff=gpg
+*.pgp    diff=gpg
+
 # Standard to msysgit
 *.doc	 diff=astextplain
 *.DOC	 diff=astextplain
