@@ -11,10 +11,10 @@ Tags: white, black, two-columns, right-sidebar, flexible-width, threaded-comment
 */
 
 /* =============================================================================
-   Reset / Display Role 
+   Reset / Display Role
    ========================================================================== */
 
- 
+
 /* #Reset & Basics (Inspired by E. Meyers) */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
@@ -186,7 +186,7 @@ a {
 	-webkit-transition: all .2s linear;
 }
 /* #Lists */
-	 
+
 ol {
 	list-style: decimal;
 }
@@ -257,7 +257,7 @@ img {
 /* =============================================================================
    Structure
    ========================================================================== */
- 
+
 /* #Wrapper */
 body {
 	background: #fff;
@@ -281,7 +281,7 @@ body {
 }
 /* #Header */
 
-	
+
 #header {
 	clear: both;
 	margin: 0 auto;
@@ -687,7 +687,7 @@ li.blog-list-small {
 	border-bottom: 1px dashed #DDD;
 }
 /*Home Blog /Archives/Search */
- 
+
 /* #Pagination */
 
 .pagination {
@@ -772,13 +772,13 @@ li.blog-list-small {
     font-weight: bold;
     font-size: 13px;}
 /* #Post Thumbnails */
-  
+
  .img-chat {
     width: 18px;
     margin: -7px 0;
     padding: 0px;
 }
- 
+
 /* #Post/Page Elements */
 .post-outer {
 	margin: 0 0 0 0px
@@ -821,7 +821,7 @@ li.blog-list-small {
 .post_content img {
 	max-width: 100%;
 	height: auto!important;
-	
+
 }
 .post_content p {
 	display: block;
@@ -1091,7 +1091,7 @@ img.centered, img.aligncenter, mg.alignleft, img.alignrightimg.alignright {
 	padding: 6px 12px;
 }
 /*# Comments Blocks*/
- 
+
 #comments {
 	display: block;
 	background: #F2F2F2;
@@ -1256,7 +1256,7 @@ li.pingback {
   border: 1px solid #ddd;
   color: #666;
   height: 30px;
-  margin: 9px 0; 
+  margin: 9px 0;
   outline: medium none;
 /*   padding: 6px 6px 6px 8px; */
   width: 39%;
@@ -1508,7 +1508,7 @@ li.pingback {
 }
 /* # subscribe Widget */
 
- 
+
 #searchform #submitbutton, .newsletter .nletterb {
 	outline: none;
 	background-color: #222;
@@ -1618,7 +1618,7 @@ li.pingback {
 	color: #AFAFAF;
 }
 /*# Footer Blocks */
- 
+
 #footer-blocks {
 	-moz-box-shadow: 0px 0px 2px #000;
 	-webkit-box-shadow: 0px 0px 2px black;
@@ -1775,7 +1775,7 @@ label {
 .slide-top {
     border: 1px solid #ccc;
   /*  max-height: 450px; */
-  
+
     width: 100%;
 	background-color:#3E3E3E;
 	overflow: hidden;
@@ -1796,7 +1796,7 @@ label {
   width: 97%;
 
 }
-.news-box  h2{text-align:center;}
+.blocks-wrapper .columns  h2{text-align:center;}
 .box-news{width:100%; float:left; margin:0%;   border: 1px solid #ccc;
   box-shadow: 5px 0 10px #ccc; }
 .box-news1{width:46%; float:left; margin:2%;   border: 1px solid #ccc;
@@ -1807,7 +1807,7 @@ label {
   .magbig-thumb{width:100%!important;}
   .list-block{padding:10px!important;}
   .secondary ul ul{background-color:#fff;}
-  
+
 /********************************************************/
  .post.hentry.ivycat-post {
     border: 1px solid #ccc;
