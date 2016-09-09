@@ -20,6 +20,12 @@ and modified by [Insonix](http://insonix.com)._
 - Clone repository into `wp-content/themes` and then
 `cd` into the new directory and run `npm install`.
 
+## Contributing
+Please see [Contributing Guidelines](./CONTRIBUTING.md) and follow templates for
+issues and pull requests. Any development done should be on a branch in your own
+fork of the main repository, submitted by pull request. All pull requests must pass
+tests through Travis-CI before merging.
+
 ## Contact
 - [email](mailto:editor@kvsun.com?subject=KVSunWP)
 - [phone](tel:17603793667,14)
