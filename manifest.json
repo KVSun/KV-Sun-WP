@@ -35,7 +35,6 @@
 	],
 	"theme_color": "#EA5708",
 	"background_color": "#EA5708",
-	"start_url": "http://design.insonix.com/kernvelly/",
-	"display": "standalone",
-	"orientation": "portrait"
+	"start_url": "https://kernvalleysun.com",
+	"display": "standalone"
 }
