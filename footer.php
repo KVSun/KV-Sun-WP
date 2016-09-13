@@ -28,23 +28,9 @@
 <div id="footer" class="clearfix">
   <div class="foot-wrap container">
     <p class="copyright"><?php echo bloginfo( 'name' ); ?>&nbsp; &copy;&nbsp;<?php echo date("Y");?></p>
-    <!--p class="credit">Designed by <a title="ThemePacific" href="http://themepacific.com">ThemePacific</a></p--> </div>
+   </div>
 </div>
 <!--/#Footer -->
 <?php wp_footer(); ?>
- <script  src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
- <script>
- if ( !(('CSS' in window) && ('supports' in CSS) && CSS.supports('position', 'sticky'))) {
- $(document).ready(function(){
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 1){
-			$('.secondary.sticky').addClass("stuck");
-		  }
-		  else{
-			$('.secondary.sticky').removeClass("stuck");
-		  }
-		});
- });
-}
- </script>
+ <script  src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 </body></html>
