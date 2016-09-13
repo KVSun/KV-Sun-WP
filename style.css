@@ -11,10 +11,10 @@ Tags: white, black, two-columns, right-sidebar, flexible-width, threaded-comment
 */
 
 /* =============================================================================
-   Reset / Display Role
+   Reset / Display Role 
    ========================================================================== */
 
-
+ 
 /* #Reset & Basics (Inspired by E. Meyers) */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
@@ -186,7 +186,7 @@ a {
 	-webkit-transition: all .2s linear;
 }
 /* #Lists */
-
+	 
 ol {
 	list-style: decimal;
 }
@@ -257,7 +257,7 @@ img {
 /* =============================================================================
    Structure
    ========================================================================== */
-
+ 
 /* #Wrapper */
 body {
 	background: #fff;
@@ -281,7 +281,7 @@ body {
 }
 /* #Header */
 
-
+	
 #header {
 	clear: both;
 	margin: 0 auto;
@@ -339,20 +339,20 @@ body {
     padding: 7px 10px !important;
 	/*background-color:#F37124!important;*/
 }
-.secondary {
+#catnav {
 	margin: 0;
 	font-size: 12px;
 	min-height: 28px;
 	position: relative;
 }
-.secondary {
+#catnav.secondary {
 	border-top: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 	background: #fff;
 	text-transform: uppercase;
 	z-index:222;
 }
-.secondary.menu-part ul {
+#catnav ul {
 	margin: 0 auto;
 	padding: 0;
 	list-style: none;
@@ -360,7 +360,7 @@ body {
 	border-bottom: 0;
 	text-align: center;
 }
-.secondary.menu-part ul a {
+#catnav ul a {
 	position: relative;
 	display: block;
 	padding: 0 20px;
@@ -386,13 +386,13 @@ body {
 	transition: all 0.2s ease-in-out;
 }
 
-.secondary ul a {
+#catnav.secondary ul a {
 	height: 48px;
 	color: #444;
 	line-height: 48px;
 	font-size: 14px;
 }
-.secondary ul li {
+#catnav ul li {
 	float: left;
 	position: relative;
 	width: auto;
@@ -420,30 +420,30 @@ body {
     margin: 0 2px;
     padding: 0;
 }
-.secondary > .sub-menu {
+#catnav > .sub-menu {
 	margin-left: 0;
 }
-.secondary ul li:first-child #maganav ul a {
+#catnav ul li:first-child #maganav ul a {
 	border-right: none;
 }
-.secondary ul li.current-menu-item a {
+#catnav ul li.current-menu-item a {
 	color: #fff;
 }
 ul.catnav li a {
 	padding: 5px 10px;
 }
-.secondary ul li.current-menu-item, .secondary ul li a:hover {
+#catnav ul li.current-menu-item, #catnav ul li a:hover {
     background: #f37124 none repeat scroll 0 0;
     color: #fff;
     text-decoration: none;
 }
-.secondary ul li.current-menu-item, .secondary >ul >li a:hover {
+#catnav.secondary ul li.current-menu-item, #catnav.secondary >ul >li a:hover {
 	background: #06AFE4;
 }
-.secondary ul li.dropme a {
+#catnav ul li.dropme a {
 	background: #06AFE4;
 }
-.secondary ul ul {
+#catnav ul ul {
 	position: absolute;
 	left: -999em;
 	width: 212px;
@@ -455,8 +455,8 @@ ul.catnav li a {
 	border-bottom: none;
 	box-shadow: 0 0 5px #ccc;
 }
-.secondary ul ul li:last-child{border-bottom:2px solid #6BCBE9;}
-.secondary ul ul a {
+#catnav ul ul li:last-child{border-bottom:2px solid #6BCBE9;}
+#catnav ul ul a {
 	/*width: 198px;*/
 	background-color: #212326;
 	height: 15px;
@@ -467,33 +467,33 @@ ul.catnav li a {
 	border-right: none;
 	width:100%;
 }
-.secondary ul ul a {
+#catnav.secondary ul ul a {
 	padding: 0px 0px 2px 15px;
 	background: #fff none repeat scroll 0 0;
     color: #444;
 }
-.secondary ul ul a:hover{ background: #06afe4 none repeat scroll 0 0;}
-.secondary ul ul a:hover {
+#catnav.secondary ul ul a:hover{ background: #06afe4 none repeat scroll 0 0;}
+#catnav ul ul a:hover {
     background-color: #fff !important;
     color: #06afe4;
 }
-.secondary ul ul ul {
+#catnav ul ul ul {
 	border-top: 0;
 	margin: -44px 0 0 208px;
 }
-.secondary ul li li {
+#catnav ul li li {
 	margin: 0;
 	border: 0;
 	border-bottom: 1px solid #e5e5e5;
 	width:100%;
 }
-.secondary ul li:hover {
+#catnav ul li:hover {
 	position: static;
 }
-.secondary ul li:hover ul ul, .secondary ul li:hover ul ul ul, .secondary ul li:hover ul ul ul ul {
+#catnav ul li:hover ul ul, #catnav ul li:hover ul ul ul, #catnav ul li:hover ul ul ul ul {
 	left: -999em;
 }
-.secondary ul li:hover ul, .secondary ul li li:hover ul, .secondary ul li li li:hover ul, .secondary ul li li li li:hover ul {
+#catnav ul li:hover ul, #catnav ul li li:hover ul, #catnav ul li li li:hover ul, #catnav ul li li li li:hover ul {
 	left: auto;
 }
 #notifybrowser {
@@ -577,6 +577,8 @@ h2.blogpost-wrapper-title, .widget-head {
 	display: block;
 	float: left;
 	margin-bottom: 15px;
+}
+.sticky {
 }
 .sb-post-list-title span {
 	padding-left: 0px;
@@ -687,7 +689,7 @@ li.blog-list-small {
 	border-bottom: 1px dashed #DDD;
 }
 /*Home Blog /Archives/Search */
-
+ 
 /* #Pagination */
 
 .pagination {
@@ -772,13 +774,13 @@ li.blog-list-small {
     font-weight: bold;
     font-size: 13px;}
 /* #Post Thumbnails */
-
+  
  .img-chat {
     width: 18px;
     margin: -7px 0;
     padding: 0px;
 }
-
+ 
 /* #Post/Page Elements */
 .post-outer {
 	margin: 0 0 0 0px
@@ -821,7 +823,7 @@ li.blog-list-small {
 .post_content img {
 	max-width: 100%;
 	height: auto!important;
-
+	
 }
 .post_content p {
 	display: block;
@@ -1091,7 +1093,7 @@ img.centered, img.aligncenter, mg.alignleft, img.alignrightimg.alignright {
 	padding: 6px 12px;
 }
 /*# Comments Blocks*/
-
+ 
 #comments {
 	display: block;
 	background: #F2F2F2;
@@ -1256,7 +1258,7 @@ li.pingback {
   border: 1px solid #ddd;
   color: #666;
   height: 30px;
-  margin: 9px 0;
+  margin: 9px 0; 
   outline: medium none;
 /*   padding: 6px 6px 6px 8px; */
   width: 39%;
@@ -1508,7 +1510,7 @@ li.pingback {
 }
 /* # subscribe Widget */
 
-
+ 
 #searchform #submitbutton, .newsletter .nletterb {
 	outline: none;
 	background-color: #222;
@@ -1618,7 +1620,7 @@ li.pingback {
 	color: #AFAFAF;
 }
 /*# Footer Blocks */
-
+ 
 #footer-blocks {
 	-moz-box-shadow: 0px 0px 2px #000;
 	-webkit-box-shadow: 0px 0px 2px black;
@@ -1775,7 +1777,7 @@ label {
 .slide-top {
     border: 1px solid #ccc;
   /*  max-height: 450px; */
-
+  
     width: 100%;
 	background-color:#3E3E3E;
 	overflow: hidden;
@@ -1796,6 +1798,7 @@ label {
   width: 97%;
 
 }
+.news-box  h2{text-align:center;}
 .blocks-wrapper .columns  h2{text-align:center;}
 .box-news{width:100%; float:left; margin:0%;   border: 1px solid #ccc;
   box-shadow: 5px 0 10px #ccc; }
@@ -1806,8 +1809,8 @@ label {
   }
   .magbig-thumb{width:100%!important;}
   .list-block{padding:10px!important;}
-  .secondary ul ul{background-color:#fff;}
-
+  #catnav ul ul{background-color:#fff;}
+  
 /********************************************************/
  .post.hentry.ivycat-post {
     border: 1px solid #ccc;
@@ -1929,9 +1932,87 @@ form.pmpro_form label {
 }
 .sticky {
   padding: 0px 8px;
+  position: fixed !important;
   top: 0;
   width: 100%;
 }
+.head-top{height:13vh;}
+.slide-top{height:80vh;}
+.slide-top img{max-height:100%; max-width:100%;}
+.menu-part{height:7vh;}
+.slide-top{max-height:100%;}
+.catnav{
+  width: 100%;
+  background-color:#fff;
+}
+.sticky {
+  padding: 0px 8px;
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+}
+.day-partition {
+    background: #711C1A;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 0 5px;
+    -moz-border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+.news-img img{width:100%;}
+	.news-list ul{margin:0px; padding:0px;}
+	.news-list ul li {
+		  border-bottom: 1px solid #ccc;
+		  padding: 15px 0;
+     }
+	 .news-list a {
+  font-size: 12px;
+  font-weight: bold;
+}
+	 .news-date{float:right; background:transparent; color:#000;}
+.news-description > p {
+  font-size: 12px;
+  padding: 11px 0;
+}
+.date-time.clearfix {
+  margin: 6px 0;
+}
+.bordr-rgt{border-right:1px solid #ccc;}
+.border-shadow{
+	 border: 1px solid #ccc;
+    box-shadow: 5px 0 10px #ccc;
+    float: left;
+    margin: 0;
+    width: 100%;
+	padding:10px;
+}
+
+	.img-post {
+			  background: #f0f0f0 none repeat scroll 0 0;
+			  border: 1px solid #f0f0f0;
+			  padding: 6px;
+			  width: 58%;
+			  float: left;
+			  margin: 5px;
+			}
+			.photo-cred {
+			  color: #666;
+			  font-size: 12px!important;
+			  font-weight: bold;
+			}
+			.photo-title {
+			  font-weight: bold;
+			  font-size: 18px!important;
+			  color:#666;
+			}
+			.photo-caption {
+			  color: #666;
+			}
+
+
 .sticky.stuck {
 	position: fixed;
 }
@@ -1939,12 +2020,14 @@ form.pmpro_form label {
 	.sticky {position: sticky;}
 }
 @media only screen and (max-width: 1200px) {
-	.secondary ul a {
+	#catnav.secondary ul a {
   font-size: 10px;
 }
-.secondary ul a {
+#catnav ul a {
     padding: 0 10px;
 	}
+	.slide-top{height:82;}
+.menu-part{height:5vh;}
 }
 @media only screen and (max-width: 980px) {
 	form.pmpro_form .input, form.pmpro_form textarea, form.pmpro_form select {
@@ -1970,7 +2053,10 @@ form.pmpro_form label {
   max-width: 90%;
   width:90%;
 }
-
+.bordr-rgt{border-right:none;}
+.head-top{height:auto;}
+.slide-top{height:auto;}
+.menu-part{height:auto;}
 #menu-top-menu{ display:none;}
 
 	.register-frm {padding:0px;}
@@ -1983,13 +2069,13 @@ form.pmpro_form label {
   overflow: hidden;
   width: 100%;
 }
-.secondary.menu-part select {
+#catnav select {
   border: 2px solid transparent;
   display: block;
   font-size: 13px;
   font-weight: bold;
   height: 46px;
-  background-image:url("http://design.insonix.com/kernvelly/wp-content/themes/bresponzive/images/menu-list.png");
+  background-image:url(images/menu-list.png);
   background-repeat:no-repeat;
   background-position:right;
   -webkit-appearance: none;
@@ -2007,6 +2093,12 @@ form.pmpro_form label {
 .post-content{padding:0px;}
 
 }
+@media only screen and (max-width: 480px) {
+		.img-post {
+			  width: 100%;
+			}
+			.post-meta-blog{width:100%;}
+			}
 @media only screen and (max-width: 360px) {
 	.pmpro_payment-expiration select {
     width: 42% !important;

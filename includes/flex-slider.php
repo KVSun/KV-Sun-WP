@@ -4,9 +4,7 @@
   <div class="camera_wrap camera_orange_skin  " id="camera_wrap_2">
 	<?php 
 	$cat_nam='Top News';
-	//echo $cat_nam.'---'.$bresponZive_tpcrn_data['feat_slide_category'];
-	 if(isset($bresponZive_tpcrn_data['feat_slide_category'])){
-		 //$cat_nam=$bresponZive_tpcrn_data['feat_slide_category'];
+	 if(isset($bresponZive_tpcrn_data['feat_slide_category'])){		 
 		}
 							$flex_posts = new WP_Query(array(
 							'showposts' => 5,

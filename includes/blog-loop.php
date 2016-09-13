@@ -4,7 +4,6 @@
 		 <?php  
 		 
 			 $query = new WP_Query( 'cat=24' );
-			 //echo '<pre>'; print_r($query);
 			if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
 		
 			<div class="blogposts-inner">
