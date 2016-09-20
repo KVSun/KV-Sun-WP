@@ -12,15 +12,7 @@
 <div class="blocks-wrapper clearfix">
 <!--#blocks-left-or-right-->
 	<div class="blocks-left eleven columns clearfix">	   			
-			<div class="news-box">
-			<h2 itemprop="headline" class="blogpost-wrapper-title"><?php _e('News','bresponZive');?> </h2>	
-			<?php   get_template_part( 'includes/blog', 'news' );?>
-			</div>
-			
-			<h2 itemprop="headline" class="blogpost-wrapper-title"><?php _e('Sports News','bresponZive');?> </h2>	
-			<?php   get_template_part( 'includes/blog', 'sport' );?>
-			
-			<h2 itemprop="headline" class="blogpost-wrapper-title"><?php _e('KV Life','bresponZive');?> </h2>	
+			<div class="news-box">		
 			<?php   get_template_part( 'includes/blog', 'kvlife' );?>		
 <!--homepage content-->
  							<?php dynamic_sidebar('Magazine Style Widgets)'); ?>

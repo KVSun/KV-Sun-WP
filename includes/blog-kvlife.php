@@ -1,16 +1,31 @@
 	
-	<div id="kv-life" class="blog-lists-blog clearfix">
+	<?php
+	  $category_slug = array('news','sports','kv-life');
+		  foreach($category_slug as $key => $value) :
+			if($value == 'kv-life'){
+				    $heading = "KV Life";
+				
+				    }
+			else if($value == 'sports'){
+					$heading = "Sports News";
+					}
+			else if($value == 'news'){
+					$heading = "News";
+					
+					}	
+	?>
+	<h2 itemprop="headline" class="blogpost-wrapper-title"><?php _e($heading,'bresponZive');?> </h2>
+	<div id=<?php echo $value;?> class="blog-lists-blog clearfix">
 	
 							<div class="blogposts-wrapper clearfix"> 
-							
-  
 
 	<div class="">
 	<div class="border-shadow">
 	<div class="col-sm-6 col-md-6 col-lg-6 bordr-rgt">
 	<?php 
+	   
 		$args = array(
-			'cat' => '25',
+			'category_name' => $value,
 			'posts_per_page' => '1',
 		);
 		$query = new WP_Query( $args );
@@ -54,6 +69,7 @@
 	 </div>
 	 <?php
 		endwhile;
+		
 	?>
 	</div>
 	<div class="col-sm-6 col-md-6 col-lg-6">
@@ -61,7 +77,7 @@
 	<ul>
 	<?php 
 		$args = array(
-			'cat' => '25',
+			'category_name' => $value,
 			'posts_per_page' => '5',
 		);
 		$query = new WP_Query( $args );
@@ -73,11 +89,14 @@
 	<li><a itemprop="url" href="<?php  the_permalink(); ?>"><b><?php the_title(); ?></b></a><span itemprop="datePublished" class="badge news-date"><?php if(get_the_date('d-m-Y') == date('d-m-Y')){ echo get_the_date('h:i A');}else{ echo get_the_date('d M,Y');} ?></span></li>	
 	<?php
 		endwhile;
+		
 		else:
 	?>
 	<h2 class="noposts"><?php _e('Sorry, no posts to display!','bresponZive');?> </h2> 
 					
-	<?php endif; ?>
+	<?php endif; 
+	
+	?>
 	
 	</ul>
 	</div>
@@ -85,7 +104,9 @@
 	</div>
 	</div>
 	</div>				 
-</div>
-		
-		  
+   </div>
+		<?php
+		endforeach;
+		?>
+	</div> 
  
