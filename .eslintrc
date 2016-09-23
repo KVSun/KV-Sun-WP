@@ -9,11 +9,11 @@
     },
     "rules": {
         "indent": [
-            1,
+            0,
             "tab"
         ],
         "quotes": [
-            1,
+            0,
             "single"
         ],
         "semi": [
@@ -21,11 +21,11 @@
             "always"
         ],
         "no-console": 0,
-        "no-mixed-spaces-and-tabs": 1,
-        "no-unused-vars": 1,
-        "no-undef": 1,
-        "no-redeclare": 1,
-        "no-empty": 1,
+        "no-mixed-spaces-and-tabs": 0,
+        "no-unused-vars": 0,
+        "no-undef": 0,
+        "no-redeclare": 0,
+        "no-empty": 0,
         "no-cond-assign": 0,
         "no-sparse-arrays": 0,
         "no-self-assign": 0,
