@@ -1,2 +1,4 @@
-*.js
 /scripts/std-js/
+/node_modules/
+/webpack.config.js
+/images/octicons/
