@@ -32,7 +32,7 @@
     "git:fetch": "git fetch --all --prune --tags",
     "git:submodules": "git submodule update --init --recursive",
     "update": "npm run git:submodules && npm run git:fetch && npm run build:icons",
-    "test": "npm run lint:php && npm run lint:js",
+    "test": "npm run lint:php",
     "postinstall": "npm run update"
   },
   "devDependencies": {
