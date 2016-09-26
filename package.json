@@ -27,7 +27,7 @@
     "build:js": "webpack",
     "build:icons": "svg-sprite-generate -c images/icons.csv -o images/icons.svg",
     "build:all": "npm run build:css && npm run build:js && npm run build:icons",
-    "lint:js": "eslint js/",
+    "lint:js": "eslint --ignore-path .eslintignore --config .eslintrc js/",
     "lint:php": "php unit.php",
     "git:fetch": "git fetch --all --prune --tags",
     "git:submodules": "git submodule update --init --recursive",
