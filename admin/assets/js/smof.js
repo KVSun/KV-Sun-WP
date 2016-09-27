@@ -12,13 +12,13 @@ jQuery.noConflict();
 jQuery(document).ready(function($){
 	
 	//(un)fold options in a checkbox-group
-  	jQuery('.fld').click(function() {
-    	var $fold='.f_'+this.id;
-    	$($fold).slideToggle('normal', "swing");
+  																																																													jQuery('.fld').click(function() {
+    																																																													var $fold='.f_'+this.id;
+    																																																													$($fold).slideToggle('normal', 'swing');
   	});
 
   	//Color picker
-  	$('.of-color').wpColorPicker();
+  																																																													$('.of-color').wpColorPicker();
 	
 	//hides warning if js is enabled			
 	$('#js-warning').hide();
@@ -28,18 +28,18 @@ jQuery(document).ready(function($){
 	
 	// Get the URL parameter for tab
 	function getURLParameter(name) {
-	    return decodeURI(
+	    																																																												return decodeURI(
 	        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
 	    );
 	}
 	
 	// If the $_GET param of tab is set, use that for the tab that should be open
-	if (getURLParameter('tab') != "") {
+	if (getURLParameter('tab') != '') {
 		$.cookie('of_current_opt', '#'+getURLParameter('tab'), { expires: 7, path: '/' });
 	}
 
 	// Display last current tab	
-	if ($.cookie("of_current_opt") === null) {
+	if ($.cookie('of_current_opt') === null) {
 		$('.group:first').fadeIn('fast');	
 		$('#of-nav li:first').addClass('current');
 	} else {
@@ -49,7 +49,7 @@ jQuery(document).ready(function($){
 		
 		$.each(hooks, function(key, value) { 
 		
-			if ($.cookie("of_current_opt") == '#of-option-'+ value) {
+			if ($.cookie('of_current_opt') == '#of-option-'+ value) {
 				$('.group#of-option-' + value).fadeIn();
 				$('#of-nav li.' + value).addClass('current');
 			}
@@ -109,10 +109,10 @@ jQuery(document).ready(function($){
 	
 	//Update Message popup
 	$.fn.center = function () {
-		this.animate({"top":( $(window).height() - this.height() - 200 ) / 2+$(window).scrollTop() + "px"},100);
-		this.css("left", 250 );
+		this.animate({'top':( $(window).height() - this.height() - 200 ) / 2+$(window).scrollTop() + 'px'},100);
+		this.css('left', 250 );
 		return this;
-	}
+	};
 		
 			
 	$('#of-popup-save').center();
@@ -146,39 +146,39 @@ jQuery(document).ready(function($){
 
 	// Style Select
 	(function ($) {
-	styleSelect = {
-		init: function () {
-		$('.select_wrapper').each(function () {
-			$(this).prepend('<span>' + $(this).find('.select option:selected').text() + '</span>');
+		styleSelect = {
+			init: function () {
+				$('.select_wrapper').each(function () {
+					$(this).prepend('<span>' + $(this).find('.select option:selected').text() + '</span>');
+				});
+				$('.select').live('change', function () {
+					$(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
+				});
+				$('.select').bind($.browser.msie ? 'click' : 'change', function(event) {
+					$(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
+				}); 
+			}
+		};
+		$(document).ready(function () {
+			styleSelect.init();
 		});
-		$('.select').live('change', function () {
-			$(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
-		});
-		$('.select').bind($.browser.msie ? 'click' : 'change', function(event) {
-			$(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
-		}); 
-		}
-	};
-	$(document).ready(function () {
-		styleSelect.init()
-	})
 	})(jQuery);
 	
 	
 	/** Aquagraphite Slider MOD */
 	
 	//Hide (Collapse) the toggle containers on load
-	$(".slide_body").hide(); 
+	$('.slide_body').hide(); 
 
 	//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-	$(".slide_edit_button").live( 'click', function(){		
+	$('.slide_edit_button').live( 'click', function(){		
 		/*
 		//display as an accordion
 		$(".slide_header").removeClass("active");	
 		$(".slide_body").slideUp("fast");
 		*/
 		//toggle for each
-		$(this).parent().toggleClass("active").next().slideToggle("fast");
+		$(this).parent().toggleClass('active').next().slideToggle('fast');
 		return false; //Prevent the browser jump to the link anchor
 	});	
 	
@@ -202,24 +202,24 @@ jQuery(document).ready(function($){
 	//Remove individual slide
 	$('.slide_delete_button').live('click', function(){
 	// event.preventDefault();
-	var agree = confirm("Are you sure you wish to delete this slide?");
+		var agree = confirm('Are you sure you wish to delete this slide?');
 		if (agree) {
 			var $trash = $(this).parents('li');
 			//$trash.slideUp('slow', function(){ $trash.remove(); }); //chrome + confirm bug made slideUp not working...
 			$trash.animate({
-					opacity: 0.25,
-					height: 0,
-				}, 500, function() {
-					$(this).remove();
+				opacity: 0.25,
+				height: 0,
+			}, 500, function() {
+				$(this).remove();
 			});
 			return false; //Prevent the browser jump to the link anchor
 		} else {
-		return false;
+			return false;
 		}	
 	});
 	
 	//Add new slide
-	$(".slide_add_button").live('click', function(){		
+	$('.slide_add_button').live('click', function(){		
 		var slidesContainer = $(this).prev();
 		var sliderId = slidesContainer.attr('id');
 		
@@ -231,7 +231,7 @@ jQuery(document).ready(function($){
 		}).get();
 		
 		var maxNum = Math.max.apply(Math, numArr);
-		if (maxNum < 1 ) { maxNum = 0};
+		if (maxNum < 1 ) { maxNum = 0;}
 		var newNum = maxNum + 1;
 		
 		var newSlide = '<li class="temphide"><div class="slide_header"><strong>Slide ' + newNum + '</strong><input type="hidden" class="slide of-input order" name="' + sliderId + '[' + newNum + '][order]" id="' + sliderId + '_slide_order-' + newNum + '" value="' + newNum + '"><a class="slide_edit_button" href="#">Edit</a></div><div class="slide_body" style="display: none; "><label>Title</label><input class="slide of-input of-slider-title" name="' + sliderId + '[' + newNum + '][title]" id="' + sliderId + '_' + newNum + '_slide_title" value=""><label>Image URL</label><input class="upload slide of-input" name="' + sliderId + '[' + newNum + '][url]" id="' + sliderId + '_' + newNum + '_slide_url" value=""><div class="upload_button_div"><span class="button media_upload_button" id="' + sliderId + '_' + newNum + '">Upload</span><span class="button remove-image hide" id="reset_' + sliderId + '_' + newNum + '" title="' + sliderId + '_' + newNum + '">Remove</span></div><div class="screenshot"></div><label>Link URL (optional)</label><input class="slide of-input" name="' + sliderId + '[' + newNum + '][link]" id="' + sliderId + '_' + newNum + '_slide_link" value=""><label>Description (optional)</label><textarea class="slide of-input" name="' + sliderId + '[' + newNum + '][description]" id="' + sliderId + '_' + newNum + '_slide_description" cols="8" rows="8"></textarea><a class="slide_delete_button" href="#">Delete</a><div class="clear"></div></div></li>';
@@ -251,10 +251,10 @@ jQuery(document).ready(function($){
 	jQuery('.slider').find('ul').each( function() {
 		var id = jQuery(this).attr('id');
 		$('#'+ id).sortable({
-			placeholder: "placeholder",
+			placeholder: 'placeholder',
 			opacity: 0.6,
-			handle: ".slide_header",
-			cancel: "a"
+			handle: '.slide_header',
+			cancel: 'a'
 		});	
 	});
 	
@@ -264,7 +264,7 @@ jQuery(document).ready(function($){
 		var id = jQuery(this).attr('id');
 		$('#'+ id).find('ul').sortable({
 			items: 'li',
-			placeholder: "placeholder",
+			placeholder: 'placeholder',
 			connectWith: '.sortlist_' + id,
 			opacity: 0.6,
 			update: function() {
@@ -272,9 +272,9 @@ jQuery(document).ready(function($){
 				
 					var listID = $(this).parent().attr('id');
 					var parentID = $(this).parent().parent().attr('id');
-					parentID = parentID.replace(id + '_', '')
+					parentID = parentID.replace(id + '_', '');
 					var optionID = $(this).parent().parent().parent().attr('id');
-					$(this).prop("name", optionID + '[' + parentID + '][' + listID + ']');
+					$(this).prop('name', optionID + '[' + parentID + '][' + listID + ']');
 					
 				});
 			}
@@ -286,7 +286,7 @@ jQuery(document).ready(function($){
 	//backup button
 	$('#of_backup_button').live('click', function(){
 	
-		var answer = confirm("Click OK to backup your current saved options.")
+		var answer = confirm('Click OK to backup your current saved options.');
 		
 		if (answer){
 	
@@ -326,14 +326,14 @@ jQuery(document).ready(function($){
 			
 		}
 		
-	return false;
+		return false;
 					
 	}); 
 	
 	//restore button
 	$('#of_restore_button').live('click', function(){
 	
-		var answer = confirm("'Warning: All of your current options will be replaced with the data from your last backup! Proceed?")
+		var answer = confirm('\'Warning: All of your current options will be replaced with the data from your last backup! Proceed?');
 		
 		if (answer){
 	
@@ -373,14 +373,14 @@ jQuery(document).ready(function($){
 	
 		}
 	
-	return false;
+		return false;
 					
 	});
 	
 	/**	Ajax Transfer (Import/Export) Option */
 	$('#of_import_button').live('click', function(){
 	
-		var answer = confirm("Click OK to import options.")
+		var answer = confirm('Click OK to import options.');
 		
 		if (answer){
 	
@@ -421,7 +421,7 @@ jQuery(document).ready(function($){
 			
 		}
 		
-	return false;
+		return false;
 					
 	});
 	
@@ -436,8 +436,8 @@ jQuery(document).ready(function($){
 		var serializedReturn = $('#of_form :input[name][name!="security"][name!="of_reset"]').serialize();
 
 		$('#of_form :input[type=checkbox]').each(function() {     
-		    if (!this.checked) {
-		        serializedReturn += '&'+this.name+'=0';
+		    																																																												if (!this.checked) {
+		        																																																												serializedReturn += '&'+this.name+'=0';
 		    }
 		});
 						
@@ -466,7 +466,7 @@ jQuery(document).ready(function($){
 			}, 2000);
 		});
 			
-	return false; 
+		return false; 
 					
 	});   
 	
@@ -475,7 +475,7 @@ jQuery(document).ready(function($){
 	$('#of_reset').click(function() {
 		
 		//confirm reset
-		var answer = confirm("Click OK to reset. All settings will be lost and replaced with default settings!");
+		var answer = confirm('Click OK to reset. All settings will be lost and replaced with default settings!');
 		
 		//ajax reset
 		if (answer){
@@ -517,7 +517,7 @@ jQuery(document).ready(function($){
 			
 		}
 			
-	return false;
+		return false;
 		
 	});
 
@@ -541,7 +541,7 @@ jQuery(document).ready(function($){
 	jQuery('.smof_sliderui').each(function() {
 		
 		var obj   = jQuery(this);
-		var sId   = "#" + obj.data('id');
+		var sId   = '#' + obj.data('id');
 		var val   = parseInt(obj.data('val'));
 		var min   = parseInt(obj.data('min'));
 		var max   = parseInt(obj.data('max'));
@@ -553,7 +553,7 @@ jQuery(document).ready(function($){
 			min: min,
 			max: max,
 			step: step,
-			range: "min",
+			range: 'min',
 			slide: function( event, ui ) {
 				jQuery(sId).val( ui.value );
 			}
@@ -568,7 +568,7 @@ jQuery(document).ready(function($){
 	  * Feature added by : Smartik - http://smartik.ws/
 	  * Date 			 : 03.17.2013
 	  */
-	jQuery(".cb-enable").click(function(){
+	jQuery('.cb-enable').click(function(){
 		var parent = $(this).parents('.switch-options');
 		jQuery('.cb-disable',parent).removeClass('selected');
 		jQuery(this).addClass('selected');
@@ -577,9 +577,9 @@ jQuery(document).ready(function($){
 		//fold/unfold related options
 		var obj = jQuery(this);
 		var $fold='.f_'+obj.data('id');
-		jQuery($fold).slideDown('normal', "swing");
+		jQuery($fold).slideDown('normal', 'swing');
 	});
-	jQuery(".cb-disable").click(function(){
+	jQuery('.cb-disable').click(function(){
 		var parent = $(this).parents('.switch-options');
 		jQuery('.cb-enable',parent).removeClass('selected');
 		jQuery(this).addClass('selected');
@@ -588,7 +588,7 @@ jQuery(document).ready(function($){
 		//fold/unfold related options
 		var obj = jQuery(this);
 		var $fold='.f_'+obj.data('id');
-		jQuery($fold).slideUp('normal', "swing");
+		jQuery($fold).slideUp('normal', 'swing');
 	});
 	//disable text select(for modern chrome, safari and firefox is done via CSS)
 	if (($.browser.msie && $.browser.version < 10) || $.browser.opera) { 
@@ -660,7 +660,7 @@ jQuery(document).ready(function($){
 	  */
 	function optionsframework_add_file(event, selector) {
 	
-		var upload = $(".uploaded-file"), frame;
+		var upload = $('.uploaded-file'), frame;
 		var $el = $(this);
 
 		event.preventDefault();
@@ -722,14 +722,14 @@ jQuery(document).ready(function($){
 	function optionsframework_file_bindings() {
 		$('.remove-image, .remove-file').on('click', function() {
 			optionsframework_remove_file( $(this).parents('.section-upload, .section-media, .slide_body') );
-        });
+        																																																																																																																								});
         
-        $('.media_upload_button').unbind('click').click( function( event ) {
-        	optionsframework_add_file(event, $(this).parents('.section-upload, .section-media, .slide_body'));
+        																																																																																																																								$('.media_upload_button').unbind('click').click( function( event ) {
+        																																																													optionsframework_add_file(event, $(this).parents('.section-upload, .section-media, .slide_body'));
         });
-    }
+    																																																												}
     
-    optionsframework_file_bindings();
+    																																																												optionsframework_file_bindings();
 
 	
 	
