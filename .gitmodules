@@ -22,3 +22,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = git://github.com/shgysk8zer0/fonts.git
+[submodule "forms"]
+	path = forms
+	url = git://github.com/KVSun/KVSun-Forms
