@@ -1,7 +1,8 @@
 		<div class="blog-lists-blog clearfix">
 			<div class="blogposts-wrapper clearfix">
 		<?php
-			$cat = end(explode('/', $_SERVER['REQUEST_URI']));
+			$cat = trim($_SERVER['REQUEST_URI'], '/');
+			$cat = end(explode('/', $cat));
 			$query = new WP_Query( "category_name={$cat}" );
 			\shgysk8zer0\Core\Console::getInstance()->log($query);
 			unset($cat);
