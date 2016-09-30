@@ -289,6 +289,7 @@ foreach( $link_bits as $bit ) {
 }
 if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
+		$console->info(get_included_files());
 		$console->sendLogHeader();
 	}
 ?>
