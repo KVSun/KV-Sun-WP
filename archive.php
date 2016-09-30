@@ -25,7 +25,7 @@
 			} elseif(is_year()) {
 				printf(__('Yearly Archives: %s', 'bresponZive'), get_the_date('Y'));
 			} elseif(is_category() || is_tag()) {
-				printf(__('Articles Posted in the " %s " Category', 'bresponZive'), single_cat_title('', false));
+				printf(__('Articles Posted in the "%s" Category', 'bresponZive'), single_cat_title('', false));
 			} elseif(is_author()) {
 				printf(__('Articles Posted by the Author: %s', 'bresponZive'), $curauth->nickname);
 			} else {
