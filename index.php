@@ -1,6 +1,7 @@
 <?php
 	namespace KVS;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
+
 	if (DEBUG_MODE) {
 		ob_start();
 		$console = \shgysk8zer0\Core\Console::getInstance();
@@ -14,12 +15,12 @@
 <!--#blocks-wrapper-->
 <div class="blocks-wrapper clearfix">
 <!--#blocks-left-or-right-->
-
 	<div class="blocks-left eleven columns clearfix">
 			<div class="news-box">
-			<?php   get_template_part( 'includes/blog', 'kvlife' );?>
-							<?php dynamic_sidebar('Magazine Style Widgets)'); ?>
-
+			<?php
+				get_template_part( 'includes/blog', 'kvlife' );
+				dynamic_sidebar('Magazine Style Widgets)');
+			?>
 			</div>
 			<!-- /blocks col -->
 <?php
