@@ -1,8 +1,13 @@
 <?php
 	namespace KVS;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
-	is_user_logged_in() and in_array('administrator', wp_get_current_user()->roles)
-		? define('DEBUG_MODE', true) : define('DEBUG_MODE', false);
+	if (DEBUG_MODE) {
+		ob_start();
+		$console = \shgysk8zer0\Core\Console::getInstance();
+		$timer = new \shgysk8zer0\Core\Timer();
+		$console->asErrorHandler();
+		$console->asExceptionHandler();
+	}
 
 	get_header();
 ?>
@@ -20,7 +25,7 @@
 <?php
 	get_sidebar();
 	get_footer();
-	if (\Autoloader\DEBUG_MODE) {
+	if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
 		$console->sendLogHeader();
 	}
