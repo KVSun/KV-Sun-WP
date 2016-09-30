@@ -10,6 +10,7 @@
 	}
 	$headers = \shgysk8zer0\Core\Headers::getInstance();
 	$url     = \shgysk8zer0\Core\URL::getInstance();
+
 	if(is_bot($_SERVER['HTTP_USER_AGENT'])) {
 		if (have_posts()) : while (have_posts()) : the_post();
 		get_header();
@@ -17,13 +18,13 @@
 		<!-- #blocks-wrapper-->
 		<div id="blocks-wrapper" class="clearfix" itemprop="mainEntityOfPage">
 			<!-- /blocks Left -or -right -->
-			<div id="blocks-left" <?php post_class('eleven columns');?>>	 		
+			<div id="blocks-left" <?php post_class('eleven columns');?>>
 				<!-- .post-content-->
 				<div class="post-content">
 					<?php
 						if(isset($bresponZive_tpcrn_data['posts_bread'])) {
 							if($bresponZive_tpcrn_data['posts_bread'] == 'On' ) {
-								bresponZive_themepacific_breadcrumb(); 
+								bresponZive_themepacific_breadcrumb();
 							}
 						}
 					?>
@@ -59,7 +60,7 @@
 						<!-- .post_content -->
 						<div class = 'post_content entry-content'>
 							<!--  Photo box start -->
-							<?php 
+							<?php
 								$image = get_field('photo_upload');
 								if(!empty($image['url'])) {
 							?>
@@ -95,7 +96,7 @@
 								</div>
 								<meta itemprop="name" content="Kern Valley Sun">
 							</div>
-						</div>	
+						</div>
 						<?php
 							the_post_thumbnail();
 							echo get_post(get_post_thumbnail_id())->post_excerpt;
@@ -105,7 +106,7 @@
 					<div class='clear'></div>
 					<?php
 						if(isset($bresponZive_tpcrn_data['posts_tags'])){
-							if($bresponZive_tpcrn_data['posts_tags'] == 'On'){ 
+							if($bresponZive_tpcrn_data['posts_tags'] == 'On'){
 					?>
 								<p class="post-tags">
 									<strong><?php _e('TOPICS','bresponZive');?>  </strong><?php the_tags('',''); ?>
@@ -291,4 +292,3 @@ if (DEBUG_MODE) {
 		$console->sendLogHeader();
 	}
 ?>
-
