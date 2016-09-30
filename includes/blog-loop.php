@@ -3,6 +3,7 @@
 		<?php
 			$cat = end(explode($_SERVER['REQUEST_URI'], '/'));
 			$query = new WP_Query( "category_name={$cat}" );
+			\shgysk8zer0\Core\Console::getInstance()->log($query);
 			unset($cat);
 			if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
 		?>
