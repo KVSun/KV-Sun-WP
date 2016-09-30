@@ -140,7 +140,7 @@
 
 } else if (!is_user_logged_in() && ! is_page( 'login' ) ) {
 	$url->path = '/wp-login.php';
-	$header->Location = "$url";
+	$headers->Location = "$url";
 	#header('Location: '.get_page_link(138));
 	//wp_redirect( $return_url );
 }else if(is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel())
