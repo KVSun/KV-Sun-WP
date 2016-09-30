@@ -1,5 +1,15 @@
 <?php
+	namespace KVS;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
+	if (DEBUG_MODE) {
+		ob_start();
+		$console = \shgysk8zer0\Core\Console::getInstance();
+		$timer = new \shgysk8zer0\Core\Timer();
+		$console->asErrorHandler();
+		$console->asExceptionHandler();
+	}
+	$headers = \shgysk8zer0\Core\Headers::getInstance();
+	$url     = \shgysk8zer0\Core\URL::getInstance();
 	if(is_bot($_SERVER['HTTP_USER_AGENT'])) {
 		if (have_posts()) : while (have_posts()) : the_post();
 		get_header();
@@ -10,7 +20,7 @@
 			<div id="blocks-left" <?php post_class('eleven columns');?>>	 		
 				<!-- .post-content-->
 				<div class="post-content">
-					<?php 
+					<?php
 						if(isset($bresponZive_tpcrn_data['posts_bread'])) {
 							if($bresponZive_tpcrn_data['posts_bread'] == 'On' ) {
 								bresponZive_themepacific_breadcrumb(); 
@@ -22,16 +32,16 @@
 						<!--.post-title-->
 						<div class="post-title"><h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1></div>
 						<!--/.post-title-->
-						<!--/#post-meta --> 
+						<!--/#post-meta -->
 						<div class="post-meta-blog">
 							<span class="meta_date" itemprop="datePublished" content="<?php echo get_the_date( 'Y-m-d' ); ?> <?php the_time( 'H:i:s' ); ?>"><?php _e('Posted:', 'bresponZive'); ?> <?php the_time('l, F d, Y g:i a'); ?></span><br>
 							<span class="meta_author" itemprop="author" itemscope itemtype="https://schema.org/Person">
 								<b><?php _e('By', 'bresponZive'); ?></b>
-								<b itemprop="name"> 
+								<b itemprop="name">
 									<?php
 										//the_field('author');
 										if(get_field('author') == "") {
-											echo ucfirst(get_the_author()); 
+											echo ucfirst(get_the_author());
 										} else {
 											the_field('author');
 										}
@@ -147,7 +157,7 @@
 
 			if (have_posts()) : while (have_posts()) :  the_post();
 		if($categoryID == 4 ) {
-			
+
 function my_extract_from_string($start, $end, $tring) {
 	$tring = stristr($tring, $start);
 	$trimmed = stristr($tring, $end);
@@ -276,5 +286,9 @@ foreach( $link_bits as $bit ) {
 	//To redirect to membership level
 	$headers->Location = get_page_link(588);
 }
+if (DEBUG_MODE) {
+		$console->log("Loaded in {$timer} ms.");
+		$console->sendLogHeader();
+	}
 ?>
 
