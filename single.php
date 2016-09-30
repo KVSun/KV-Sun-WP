@@ -10,10 +10,8 @@
 	}
 	$headers = \shgysk8zer0\Core\Headers::getInstance();
 	$url     = \shgysk8zer0\Core\URL::getInstance();
-	if (array_key_exists('REDIRECT_URL', $_SERVER)) {
-		require_once __DIR__ . DIRECTORY_SEPARATOR . 'url_map.php';
-		\KVS\redirect_check();
-	} elseif(is_bot($_SERVER['HTTP_USER_AGENT'])) {
+
+	if(is_bot($_SERVER['HTTP_USER_AGENT'])) {
 		if (have_posts()) : while (have_posts()) : the_post();
 		get_header();
 ?>

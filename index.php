@@ -9,10 +9,6 @@
 		$console->asExceptionHandler();
 	}
 
-	if (array_key_exists('REDIRECT_URL', $_SERVER)) {
-		require_once __DIR__ . DIRECTORY_SEPARATOR . 'url_map.php';
-		\KVS\redirect_check();
-	}
 	get_header();
 ?>
 <!--#blocks-wrapper-->
