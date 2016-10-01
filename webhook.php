@@ -19,13 +19,16 @@ function handler_exception(\Exception $e)
 	));
 }
 set_exception_handler(__NAMESPACE__ . '\handler_exception');
-
+file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . CONFIG, file_get_contents('php://input'));
+file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'headers.json', json_encode(getallheaders(), JSON_PRETTY_PRINT));
 try {
 	$webhook = new \shgysk8zer0\Core\GitHubWebhook(CONFIG);
 	if ($webhook->validate()) {
 		switch(trim(strtolower($webhook->event))) {
-			/*case 'push':
-				if ($webhook->parsed->ref === 'master') {
+			case 'ping':
+				break;
+			case 'push':
+			/*	if ($webhook->parsed->ref === 'master') {
 					`git pull & npm install`;
 					echo `git status` . PHP_EOL;
 				}
@@ -88,8 +91,8 @@ try {
 				}*/
 				break;
 
-			case 'issues':
-				/*if ($PDO->connected) {
+		/*	case 'issues':
+				if ($PDO->connected) {
 					$stm = $PDO->prepare(
 						"INSERT INTO `Issues` (
 							`Number`,
@@ -158,8 +161,8 @@ try {
 					}
 				} else {
 					throw new \Exception('Failed to connect to database', 500);
-				}*/
-				break;
+				}
+				break;*/
 
 			default:
 				file_put_contents(__DIR__ . $webhook->event . '_' . date('Y-m-d\TH:i:s') . '.json', json_encode($webhook->parsed, JSON_PRETTY_PRINT));
