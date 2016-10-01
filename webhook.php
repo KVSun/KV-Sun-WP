@@ -22,6 +22,11 @@ set_exception_handler(__NAMESPACE__ . '\handler_exception');
 echo 'Connection successful.' . PHP_EOL;
 try {
 	$webhook = new \shgysk8zer0\Core\GitHubWebhook(CONFIG);
+	$email = new \shgysk8zer0\Core\Email(
+		$_SERVER['SERVER_ADMIN'],
+		sprintf('% event on %s', $webhook->event, $_SERVER['SERVER_NAME'])
+	);
+
 	if ($webhook->validate()) {
 		echo 'Request validated.' . PHP_EOL;
 		switch(trim(strtolower($webhook->event))) {
@@ -32,8 +37,11 @@ try {
 				echo "Push to {$webhook->parsed->ref}" . PHP_EOL;
 				if ($webhook->parsed->ref === 'refs/heads/master') {
 					echo `git pull`;
-					echo `git status` . PHP_EOL;
+					$status = `git status`;
+					echo $status . PHP_EOL;
 					`npm install`;
+					$email->message = $status;
+					$email->send();
 				}
 			/*	if($PDO->connected) {
 					$stm = $PDO->prepare(
