@@ -162,7 +162,7 @@ try {
 				break;
 
 			default:
-//				file_put_contents($webhook->event . '_' . date('Y-m-d\TH:i:s') . '.json', json_encode($webhook->parsed, JSON_PRETTY_PRINT));
+				file_put_contents(__DIR__ . $webhook->event . '_' . date('Y-m-d\TH:i:s') . '.json', json_encode($webhook->parsed, JSON_PRETTY_PRINT));
 				throw new \Exception("Unhandled event: {$webhook->event}", 501);
 		}
 	} else {
