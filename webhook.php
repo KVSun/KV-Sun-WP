@@ -19,20 +19,23 @@ function handler_exception(\Exception $e)
 	));
 }
 set_exception_handler(__NAMESPACE__ . '\handler_exception');
-file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . CONFIG, file_get_contents('php://input'));
-file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'headers.json', json_encode(getallheaders(), JSON_PRETTY_PRINT));
+echo 'Connection successful.' . PHP_EOL;
 try {
 	$webhook = new \shgysk8zer0\Core\GitHubWebhook(CONFIG);
 	if ($webhook->validate()) {
+		echo 'Request validated.' . PHP_EOL;
 		switch(trim(strtolower($webhook->event))) {
 			case 'ping':
+				echo 'PING' . PHP_EOL;
 				break;
 			case 'push':
-			/*	if ($webhook->parsed->ref === 'master') {
-					`git pull & npm install`;
+				echo "Push to {$webhook->parsed->ref}" . PHP_EOL;
+				if ($webhook->parsed->ref === 'refs/heads/master') {
+					echo `git pull`;
 					echo `git status` . PHP_EOL;
+					`npm install`;
 				}
-				if($PDO->connected) {
+			/*	if($PDO->connected) {
 					$stm = $PDO->prepare(
 						'INSERT INTO `Commits` (
 							`SHA`,
