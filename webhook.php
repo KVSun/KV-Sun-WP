@@ -2,7 +2,7 @@
 namespace WebHook;
 
 const CONFIG = 'config/github.json';
-// error_reporting(0);
+error_reporting(0);
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 header('Content-Type: text/plain');
