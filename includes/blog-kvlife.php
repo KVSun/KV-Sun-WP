@@ -1,24 +1,24 @@
 
 	<?php
-	$category_slug = array('news','sports','kv-life');
-	foreach($category_slug as $value) :
-		if($value == 'kv-life') {
-			$heading = "KV Life";
-		} elseif ($value == 'sports') {
-			$heading = "Sports News";
-		} elseif ($value == 'news') {
-			$heading = "News";
-		}
-	?>
-	<h2 itemprop="headline" class="blogpost-wrapper-title"><?php _e($heading,'bresponZive');?> </h2>
-	<div id=<?=$value;?> class="blog-lists-blog clearfix">
+	$category_slugs = array(
+		'News'        => 'news',
+		'Sports News' => 'sports',
+		'KV Life'     => 'kv-life'
+	);
+	$url = \shgysk8zer0\Core\URL::getInstance();
+	$url = clone($url);
+	foreach($category_slugs as $heading => $slug) : $url->path = "category/{$slug}/"?>
+	<h2 itemprop="headline" class="blogpost-wrapper-title">
+		<a href="<?=$url?>"><?php _e($heading,'bresponZive');?></a>
+	</h2>
+	<div id=<?=$slug;?> class="blog-lists-blog clearfix">
 		<div class="blogposts-wrapper clearfix">
 			<div>
 				<div class="border-shadow">
 					<div class="col-sm-6 col-md-6 col-lg-6 bordr-rgt">
 	<?php
 		$args = array(
-			'category_name' => $value,
+			'category_name' => $slug,
 			'posts_per_page' => '1',
 		);
 		$query = new WP_Query( $args );
@@ -31,7 +31,7 @@
 				<p class="pull-right badge"><?php echo get_the_date('h:i A'); ?></p>
 			</div>
 			<h3 itemprop="headline">
-				<a itemprop="url" href="<?php  the_permalink(); ?>"><?php the_title(); ?></a>
+				<a itemprop="url" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			</h3>
 	 </div>
 	<?php
@@ -74,7 +74,7 @@
 	<ul>
 	<?php
 		$args = array(
-			'category_name' => $value,
+			'category_name' => $slug,
 			'posts_per_page' => '5',
 		);
 		$query = new WP_Query( $args );
