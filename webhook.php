@@ -24,7 +24,7 @@ try {
 	$webhook = new \shgysk8zer0\Core\GitHubWebhook(CONFIG);
 	$email = new \shgysk8zer0\Core\Email(
 		$_SERVER['SERVER_ADMIN'],
-		sprintf('% event on %s', $webhook->event, $_SERVER['SERVER_NAME'])
+		sprintf('%s event on %s', $webhook->event, $_SERVER['SERVER_NAME'])
 	);
 
 	if ($webhook->validate()) {
