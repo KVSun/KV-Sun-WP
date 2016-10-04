@@ -25,3 +25,6 @@
 [submodule "forms"]
 	path = forms
 	url = git://github.com/KVSun/KVSun-Forms
+[submodule "classes/kvsun/wp_e_edition"]
+	path = classes/kvsun/wp_e_edition
+	url = git://github.com/KVSun/wp_e_edition.git
