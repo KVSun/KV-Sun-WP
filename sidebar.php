@@ -9,16 +9,16 @@
 	);
 
 	global $bresponZive_tpcrn_data;
-
-	if (is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel()) :?>
-	<a href="<?=get_template_directory_uri() . E_EDITION['href']?>">
-		<img src="<?=get_template_directory_uri() . E_EDITION['src']?>" alt="<?=E_EDITION['alt']?>" width="<?=E_EDITION['width']?>" height="<?=E_EDITION['height']?>">
-	</a>
-	<?php endif;?>
+?>
 <!--#Sidebar-->
 
 <div id="sidebar" class="six columns  clearfix <?php if(is_page('calendar')){ echo 'column-right'; }?>">
-
+	<?php if (is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel()) :?>
+	<a href="<?=get_template_directory_uri() . E_EDITION['href']?>">
+		<h3>E-Edtion</h3>
+		<img src="<?=get_template_directory_uri() . E_EDITION['src']?>" alt="<?=E_EDITION['alt']?>" width="<?=E_EDITION['width']?>" height="<?=E_EDITION['height']?>">
+	</a>
+	<?php endif;?>
 
 <!-- Upcomming event widget code Start -->
 <?php if(!is_page('calendar')){ ?>
