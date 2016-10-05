@@ -1,6 +1,6 @@
 <?php
  	namespace KVS\Sidebar;
-	const E_EDTION = array(
+	const E_EDITION = array(
 		'height' => 64,
 		'width'  => 64,
 		'href'   => '/e-edition/?date=2016-10-05',
