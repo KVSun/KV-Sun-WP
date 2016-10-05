@@ -1,4 +1,20 @@
-<?php global $bresponZive_tpcrn_data;?>
+<?php
+ 	namespace KVS\Sidebar;
+	const E_EDTION = array(
+		'height' => 64,
+		'width'  => 64,
+		'href'   => '/e-edition/?date=2016-10-05',
+		'src'    => '/images/octicons/lib/svg/file-pdf.svg',
+		'alt'    => 'E-Edition'
+	);
+
+	global $bresponZive_tpcrn_data;
+
+	if (is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel()) :?>
+	<a href="<?=get_template_directory_uri() . E_EDTION['href']?>">
+		<img src="<?=get_template_directory_uri() . E_EDITION['src']?>" alt="<?=E_EDTION['alt']?>" width="<?=E_EDTION['width']?>" height="<?=E_EDTION['height']?>">
+	</a>
+	<?php endif;?>
 <!--#Sidebar-->
 
 <div id="sidebar" class="six columns  clearfix <?php if(is_page('calendar')){ echo 'column-right'; }?>">
@@ -6,10 +22,10 @@
 
 <!-- Upcomming event widget code Start -->
 <?php if(!is_page('calendar')){ ?>
-	<div class="event-widget"> 
+	<div class="event-widget">
 <h3 class="widget-head">Upcoming Events</h3>  <!-- Heading of event widget -->
- 
- 
+
+
 <script class="ai1ec-widget-placeholder" data-widget="ai1ec_agenda_widget" data-events_seek_type="events">
   (function(){var d=document,s=d.createElement('script'),
   i='ai1ec-script';
@@ -23,5 +39,5 @@
 
 
 <?php  dynamic_sidebar ("Default Sidebar");  	?>
-</div> 
-<!-- /#Sidebar-->						
+</div>
+<!-- /#Sidebar-->
