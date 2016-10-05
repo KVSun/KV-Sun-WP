@@ -11,6 +11,9 @@
 	}
 
 	get_header();
+	if (!is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && !pmpro_hasMembershipLevel()) {
+		require_once __DIR__ . DIRECTORY_SEPARATOR . 'pass.html';
+	}
 ?>
 <!--#blocks-wrapper-->
 <div class="blocks-wrapper clearfix">
