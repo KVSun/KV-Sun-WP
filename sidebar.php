@@ -11,8 +11,8 @@
 	global $bresponZive_tpcrn_data;
 
 	if (is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel()) :?>
-	<a href="<?=get_template_directory_uri() . E_EDTION['href']?>">
-		<img src="<?=get_template_directory_uri() . E_EDITION['src']?>" alt="<?=E_EDTION['alt']?>" width="<?=E_EDTION['width']?>" height="<?=E_EDTION['height']?>">
+	<a href="<?=get_template_directory_uri() . E_EDITION['href']?>">
+		<img src="<?=get_template_directory_uri() . E_EDITION['src']?>" alt="<?=E_EDITION['alt']?>" width="<?=E_EDITION['width']?>" height="<?=E_EDITION['height']?>">
 	</a>
 	<?php endif;?>
 <!--#Sidebar-->
