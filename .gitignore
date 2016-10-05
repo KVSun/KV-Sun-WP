@@ -5,6 +5,7 @@
 *js.map
 *.orig
 /config/github.json
+/e-edition/E-Editions
 
 #################
 ## Eclipse

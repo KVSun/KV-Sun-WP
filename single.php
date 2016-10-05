@@ -11,9 +11,9 @@
 	$headers = \shgysk8zer0\Core\Headers::getInstance();
 	$url     = \shgysk8zer0\Core\URL::getInstance();
 
+	get_header();
 	if(is_bot($_SERVER['HTTP_USER_AGENT'])) {
 		if (have_posts()) : while (have_posts()) : the_post();
-		get_header();
 ?>
 		<!-- #blocks-wrapper-->
 		<div id="blocks-wrapper" class="clearfix" itemprop="mainEntityOfPage">
@@ -144,7 +144,7 @@
 	$headers->Location = "$url";
 	#header('Location: '.get_page_link(138));
 	//wp_redirect( $return_url );
-}else if(is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel())
+} elseif(is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel())
 {
 	global $current_user;
 	$current_user->membership_level = pmpro_getMembershipLevelForUser($current_user->ID);
