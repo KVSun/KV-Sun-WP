@@ -140,9 +140,7 @@
 	die;
 
 } else if (!is_user_logged_in() && ! is_page( 'login' ) ) {
-	$url->path = '/wp-login.php';
-	$headers->Location = "$url";
-	#header('Location: '.get_page_link(138));
+	header('Location: '. wp_login_url( get_permalink()));
 	//wp_redirect( $return_url );
 } elseif(is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel())
 {
@@ -265,8 +263,7 @@
 	}
 } else {
 	//To redirect to membership level
-	$url->path = '/wp-login.php';
-	$headers->Location = "$url";
+	header('Location: ' . wp_login_url(get_permalink()));
 }
 if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
