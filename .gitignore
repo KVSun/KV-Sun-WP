@@ -6,6 +6,7 @@
 *.orig
 /config/github.json
 /e-edition/E-Editions
+/images/icons.svg
 
 #################
 ## Eclipse
