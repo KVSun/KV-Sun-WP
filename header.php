@@ -48,7 +48,7 @@
 <?php endif;?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!-- CSS + jQuery + JavaScript -->
-<scriptsrc="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
 <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
