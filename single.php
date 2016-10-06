@@ -263,7 +263,9 @@
 	}
 } else {
 	//To redirect to membership level
-	header('Location: ' . wp_login_url(get_permalink()));
+	// /wp-login.php?action=register
+
+	header('Location: ' .  wp_registration_url());
 }
 if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
