@@ -156,27 +156,7 @@
 	if(!empty($current_user->membership_level->name)) {
 		$current_user->membership_level->name;
 
-			if (have_posts()) : while (have_posts()) :  the_post();
-		if($categoryID == 4 ) {
-
-function my_extract_from_string($start, $end, $tring) {
-	$tring = stristr($tring, $start);
-	$trimmed = stristr($tring, $end);
-	return substr($tring, strlen($start), -strlen($trimmed));
-}
-// Get the text & url from the first link in the content
-
-$content = get_the_content();
-$link_string = my_extract_from_string('<a href=', '/a>', $content);
-$link_bits = explode('"', $link_string);
-foreach( $link_bits as $bit ) {
-	if( substr($bit, 0, 1) == '>') $link_text = substr($bit, 1, strlen($bit)-2);
-	if( substr($bit, 0, 4) == 'http') $link_url = $bit;
-}
-	header('Content-Type: application/pdf');
-	readfile($link_url);
-	exit();
-}
+		if (have_posts()) : while (have_posts()) :  the_post();
 
 ?>
 <?php get_header(); ?>
@@ -285,7 +265,8 @@ foreach( $link_bits as $bit ) {
 	}
 } else {
 	//To redirect to membership level
-	$headers->Location = get_page_link(588);
+	$url->path = '/wp-login.php';
+	$headers->Location = "$url";
 }
 if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
