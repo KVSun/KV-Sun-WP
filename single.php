@@ -285,7 +285,8 @@ foreach( $link_bits as $bit ) {
 	}
 } else {
 	//To redirect to membership level
-	$headers->Location = get_page_link(588);
+	$url->path = '/wp-login.php';
+	$headers->Location = "$url";
 }
 if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
