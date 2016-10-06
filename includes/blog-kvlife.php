@@ -35,15 +35,10 @@
 			</h3>
 	 </div>
 	<?php
-	if (function_exists('get_field')) {
-		$image = get_field('photo_upload');
-	} else {
-		$image = null;
-		trigger_error('Please install Advanced Custom Fields plugin. (https://wordpress.org/plugins/advanced-custom-fields/)');
-	}
+	$image = get_the_post_thumbnail_url();
 	if ( isset($image) ) { ?>
 		<a itemprop="url" href="<?php  the_permalink(); ?>" title="<?php the_title(); ?>" class="post-thumbnail">
-			<img itemprop="image" style ="background-image: url(<?=$image['url']?>); background-repeat:no-repeat; background-size:cover;  background-position: 57% 5%; height: 172px;" alt=""  />
+			<img itemprop="image" style="background-image: url(<?=$image?>); background-repeat:no-repeat; background-size:cover;  background-position: 57% 5%; height: 172px;" alt=""  />
 		</a>
 	<?php } else { ?>
 		<a itemprop="url" href="<?php  the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
