@@ -49,7 +49,22 @@ try {
 	$header->content_type = 'text/html';
 	$dom = new DOM\HTML();
 	$dom->head->append('title', __NAMESPACE__);
-	$dom->body->append('h1', 'Read an E-Edition');
+	$dom->body->append('a', null, [
+		'href' => '/'
+	])->append('img', null, [
+		'src' => '/images/sun.svg',
+		'alt' => 'Kern Valley Sun homepage'
+	]);
+	$dom->body->append('h1', 'Read an E-Edition')->append('svg', null, [
+		'height' => 64,
+		'width' => 64,
+		'xmlns' => 'http://www.w3.org/2000/svg',
+		'xmlns:xlink' => 'http://www.w3.org/1999/xlink'
+	])->append('use', null, [
+		'xlink:href' => '/images/icons.svg#book'
+	]);;
+
+	$dom->body->append('hr');
 	$list = $dom->body->append('ul');
 
 	foreach ($scanner as $file) {
