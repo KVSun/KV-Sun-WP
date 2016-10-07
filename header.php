@@ -1,54 +1,52 @@
+<?php
+	namespace KVS;
+	const MANIFEST = __DIR__ . DIRECTORY_SEPARATOR . 'manifest.json';
+
+	$url = \shgysk8zer0\Core\URL::getInstance();
+?>
 <!DOCTYPE html>
 <html <?php html_schema(); ?> <?php language_attributes(); ?>>
 <head>
 <!-- Meta info -->
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<base href="/"/>
-<meta charset="utf-8" />
 <meta name="referrer" content="origin-when-cross-origin"/>
 <meta name="viewport" content="width=device-width, height=device-height" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="theme-color" content="#EA5708" />
-<?php if(is_single()){ ?>
-	<meta itemprop="name" content="<?php the_title(); ?>" />
-	<meta itemprop="url" name="url" content="<?php echo $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" />
-<?php } else { ?>
-	<meta itemprop="name" content="KVSun-WP-Theme" />
-<?php } ?>
-<meta property="fb:app_id" content="" />
-<meta name="og:title" content="KVSun-WP-Theme" />
-<meta name="og:description" content="A custom theme for the Kern Valley Sun Wordpress site." />
-<meta name="og:image" content="<?php echo get_template_directory_uri(); ?>/images/sun-icons/32.png" />
-<meta name="twitter:site" content="@kvsun" />
-<meta name="twitter:title" content="KVSun-WP-Theme" />
-<meta name="twitter:description" content="A custom theme for the Kern Valley Sun Wordpress site." />
-<meta name="twitter:image" content="<?php echo get_template_directory_uri(); ?>/images/sun-icons/32.png" />
-<meta name="twitter:card" content="summary_large_image" />
 <meta name="robots" content="index,noarchive">
-<link rel="apple-touch-icon" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/16.png" />
-<link rel="icon" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/16.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/32.png" />
-<link rel="icon" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/32.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/72.png" />
-<link rel="icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/72.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/144.png" />
-<link rel="icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/144.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="256x256" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/256.png" />
-<link rel="icon" sizes="256x256" href="<?php echo get_template_directory_uri(); ?>/images/sun-icons/256.png" type="image/png" />
-<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<base href="/" />
+<?php if (file_exists(MANIFEST)): $manifest = json_decode(file_get_contents(MANIFEST));?>
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="theme-color" content="<?=$manifest->theme_color?>" />
+	<meta property="fb:app_id" content="" />
+	<meta name="og:title" content="<?php the_title();?>" />
+	<meta name="og:description" content="<?=$manifest->description?>" />
+	<meta name="og:image" content="<?=get_template_directory_uri(); ?>/images/sun-icons/32.png" />
+	<meta name="twitter:site" content="@kvsun" />
+	<meta name="twitter:title" content="<?php the_title();?>" />
+	<meta name="twitter:description" content="<?=$manifest->description?>" />
+	<meta name="twitter:image" content="<?=get_template_directory_uri(); ?>/images/sun-icons/32.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<link rel="manifest" href="<?=get_template_directory_uri() . '/' . basename(MANIFEST)?>" />
+	<?php if(@is_array($manifest->icons)) : foreach($manifest->icons as $icon):?>
+		<link rel="icon" sizes="<?=$icon->sizes?>" href="<?=$icon->src?>" type="<?=$icon->type?>" />
+		<link rel="apple-touch-icon" sizes="<?=$icon->sizes?>" href="<?=$icon->src?>" type="<?=$icon->type?>" />
+	<?php endforeach; endif;?>
+<?php endif;?>
+<?php if(is_single()) { ?>
+	<meta itemprop="name" content="<?php the_title(); ?>" />
+	<meta itemprop="url" name="url" content="<?=$url?>" />
+<?php } else { ?>
+	<meta itemprop="name" content="<?php the_title()?>" />
+<?php } ?>
 <!-- Title -->
 <?php global $bresponZive_tpcrn_data;?>
 <title><?php is_home() ? wp_title( '|', true, 'right' ) : the_title();?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <?php if($bresponZive_tpcrn_data['custom_favicon']): ?>
-	<link rel="shortcut icon" href="<?php echo esc_url($bresponZive_tpcrn_data['custom_favicon']); ?>" />
+	<link rel="shortcut icon" href="<?=esc_url($bresponZive_tpcrn_data['custom_favicon']); ?>" />
 <?php endif;?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!-- CSS + jQuery + JavaScript -->
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+<script src="<?=get_template_directory_uri(); ?>/js/jquery.min.js"></script>
 <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
@@ -68,19 +66,19 @@
 				$logo = get_template_directory_uri() . '/images/logo.png';
 			}
 	?>
-	<a href="<?php echo esc_url( home_url( '/' ) );?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
-		<img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo( 'name' ) ?>" />
+	<a href="<?=esc_url( home_url( '/' ) );?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
+		<img src="<?=esc_url($logo); ?>" alt="<?php bloginfo( 'name' ) ?>" />
 	</a>
 	<?php } else { ?>
 	<?php if (is_home()) { ?>
-	<h1><a href="<?php echo esc_url( home_url( '/' ) );?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
+	<h1><a href="<?=esc_url( home_url( '/' ) );?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
 		<?php bloginfo( 'name' ); ?>
 		</a></h1>
 	<span>
 	<?php bloginfo( 'description' ); ?>
 	</span>
 	<?php } else { ?>
-	<h2><a href="<?php echo esc_url( home_url( '/' ) );?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
+	<h2><a href="<?=esc_url( home_url( '/' ) );?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
 		<?php bloginfo( 'name' ); ?>
 		</a></h2>
 	<?php } } ?>
@@ -112,7 +110,7 @@
 			'fallback_cb' => 'false',
 			'depth' => 3
 		));
-		}
+	}
 ?>
 </div>
 <!-- /#CatNav --->
@@ -136,7 +134,7 @@
 </div>
 <!-- Slider start ---->
 <div class="slide-top">
-	<img src ="<?php echo get_template_directory_uri(); ?>/images/sun.svg" />
+	<img src ="<?=get_template_directory_uri(); ?>/images/sun.svg" />
 </div>
 <?php } else { if ( has_nav_menu('mainNav') ){ ?>
 	<!-- #CatNav -->
