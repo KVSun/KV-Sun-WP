@@ -17,11 +17,11 @@
 	<meta name="mobile-web-app-capable" content="yes" />
 	<meta name="theme-color" content="<?=$manifest->theme_color?>" />
 	<meta property="fb:app_id" content="" />
-	<meta name="og:title" content="<?php the_title();?>" />
+	<meta name="og:title" content="<?php is_home() ? wp_title( '|', true, 'right' ) : the_title();?>" />
 	<meta name="og:description" content="<?=$manifest->description?>" />
 	<meta name="og:image" content="<?=get_template_directory_uri(); ?>/images/sun-icons/32.png" />
 	<meta name="twitter:site" content="@kvsun" />
-	<meta name="twitter:title" content="<?php the_title();?>" />
+	<meta name="twitter:title" content="<?php is_home() ? wp_title( '|', true, 'right' ) : the_title();?>" />
 	<meta name="twitter:description" content="<?=$manifest->description?>" />
 	<meta name="twitter:image" content="<?=get_template_directory_uri(); ?>/images/sun-icons/32.png" />
 	<meta name="twitter:card" content="summary_large_image" />
@@ -35,7 +35,7 @@
 	<meta itemprop="name" content="<?php the_title(); ?>" />
 	<meta itemprop="url" name="url" content="<?=$url?>" />
 <?php } else { ?>
-	<meta itemprop="name" content="<?php the_title()?>" />
+	<meta itemprop="name" content="<?php is_home() ? wp_title( '|', true, 'right' ) : the_title();?>" />
 <?php } ?>
 <!-- Title -->
 <?php global $bresponZive_tpcrn_data;?>
