@@ -88,7 +88,7 @@ try {
 	$dom->body->append('a', null, [
 		'href' => '/'
 	])->append('img', null, [
-		'src' => '/images/sun.svg',
+		'src' => '../images/sun.svg',
 		'alt' => 'Kern Valley Sun homepage'
 	]);
 
@@ -113,7 +113,7 @@ try {
 		'xmlns'       => 'http://www.w3.org/2000/svg',
 		'xmlns:xlink' => 'http://www.w3.org/1999/xlink'
 	])->append('use', null, [
-		'xlink:href' => '/images/icons.svg#book'
+		'xlink:href' => '../images/icons.svg#book'
 	]);;
 
 	$dom->body->append('hr');
