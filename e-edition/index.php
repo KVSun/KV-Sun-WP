@@ -6,11 +6,20 @@ namespace KVSun\WP_E_Edition;
 use \shgysk8zer0\Core as Core;
 use \shgysk8zer0\DOM as DOM;
 
-const ROOT      = __DIR__ . DIRECTORY_SEPARATOR . 'E-Editions';
-const PUB_DAY   = 'Wednesday';
-const DATE_KEY  = 'date';
-const ISSUE_KEY = 'section';
-const SCAN_BACK = 4;
+const ROOT        = __DIR__ . DIRECTORY_SEPARATOR . 'E-Editions';
+const PUB_DAY     = 'Wednesday';
+const DATE_KEY    = 'date';
+const ISSUE_KEY   = 'section';
+const SCAN_BACK   = 4;
+const ICON_SIZE   = 64;
+// Date format for humans to read
+const OUT_FORM    = 'long';
+// Date format for internal/server user
+const IN_FORM     = 'week';
+const FORMATS     = array(
+	'week'   => 'Y-\WW',
+	'long'  => 'F j, Y'
+);
 
 ob_start();
 set_include_path(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'classes');
@@ -24,12 +33,12 @@ function list_weeks(Week $week, DOM\HTMLElement $container, $scan = SCAN_BACK)
 
 	while ($weeks++ < $scan) {
 		$details = $container->append('details');
-		$details->append('summary')->append('b', $week->format('F j, Y'));
+		$details->append('summary')->append('b', $week->format(FORMATS[OUT_FORM]));
 		$list = $details->append('ul');
 
 		foreach ($scanner as $file) {
 			$url->query = [
-				DATE_KEY    => $week->format('Y-m-d'),
+				DATE_KEY    => $week->format(FORMATS[IN_FORM]),
 				ISSUE_KEY   => "$file"
 			];
 			$list->append('li')->append('a', $file, ['href' => "$url"] );
@@ -51,8 +60,8 @@ $timer = new Core\Timer();
 try {
 	$header = Core\Headers::getInstance();
 	$url    = Core\URL::getInstance();
+	$date   = new \DateTime(array_key_exists(DATE_KEY, $_GET) ? $_GET[DATE_KEY] : null);
 
-	$date = new \DateTime(array_key_exists(DATE_KEY, $_GET) ? $_GET[DATE_KEY] : null);
 	if ($date->format('l') !== PUB_DAY) {
 		$date->modify(PUB_DAY);
 	}
@@ -62,14 +71,13 @@ try {
 	}
 
 	$week = new Week(ROOT, $date->format($date::W3C));
-	unset($date);
 
 	if (array_key_exists(ISSUE_KEY, $_GET)) {
 		if (isset($week->{$_GET[ISSUE_KEY]})) {
 			$week->{$_GET[ISSUE_KEY]}->out();
 		} else {
 			trigger_error(
-				"No section '{$_GET['section']}' found for {$week->format('M j, Y')}."
+				"No section '{$_GET[ISSUE_KEY]}' found for {$week->format(FORMATS[OUT_FORM])}."
 			);
 		}
 	}
@@ -85,18 +93,23 @@ try {
 	]);
 
 	$form = $dom->body->append('form', null, ['name' => 'edition-date']);
+	$form->append('label', "Pick a week/year");
 	$form->append('input', null, [
-		'type' => 'date',
-		'name' => DATE_KEY,
-		'placeholder' => 'YYYY-mm-dd',
-		'required' => '',
-		'autofocus' => ''
+		'type'        => 'week',
+		'name'        => DATE_KEY,
+		'id'          => DATE_KEY,
+		'value'       => (new \DateTime())->format(FORMATS[IN_FORM]),
+		'placeholder' => 'YYYY-W##',
+		'required'    => '',
+		'autofocus'   => ''
 	]);
+	$form->append('br');
 	$form->append('button', 'Search', ['type' => 'submit]']);
+	unset($form);
 
 	$dom->body->append('h1', 'Read an E-Edition')->append('svg', null, [
-		'height'      => 64,
-		'width'       => 64,
+		'height'      => ICON_SIZE,
+		'width'       => ICON_SIZE,
 		'xmlns'       => 'http://www.w3.org/2000/svg',
 		'xmlns:xlink' => 'http://www.w3.org/1999/xlink'
 	])->append('use', null, [
