@@ -83,6 +83,17 @@ try {
 		'src' => '/images/sun.svg',
 		'alt' => 'Kern Valley Sun homepage'
 	]);
+
+	$form = $dom->body->append('form', null, ['name' => 'edition-date']);
+	$form->append('input', null, [
+		'type' => 'date',
+		'name' => DATE_KEY,
+		'placeholder' => 'YYYY-mm-dd',
+		'required' => '',
+		'autofocus' => ''
+	]);
+	$form->append('button', 'Search', ['type' => 'submit]']);
+
 	$dom->body->append('h1', 'Read an E-Edition')->append('svg', null, [
 		'height'      => 64,
 		'width'       => 64,
