@@ -6,12 +6,14 @@ namespace KVSun\WP_E_Edition;
 use \shgysk8zer0\Core as Core;
 use \shgysk8zer0\DOM as DOM;
 
+const TITLE       = 'Read an E-Edtion';
 const ROOT        = __DIR__ . DIRECTORY_SEPARATOR . 'E-Editions';
 const PUB_DAY     = 'Wednesday';
 const DATE_KEY    = 'date';
 const ISSUE_KEY   = 'section';
 const SCAN_BACK   = 4;
 const ICON_SIZE   = 64;
+const IMG_PATH    = '../images/';
 // Date format for humans to read
 const OUT_FORM    = 'long';
 // Date format for internal/server user
@@ -20,6 +22,7 @@ const FORMATS     = array(
 	'week'   => 'Y-\WW',
 	'long'  => 'F j, Y'
 );
+
 
 ob_start();
 set_include_path(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'classes');
@@ -84,11 +87,11 @@ try {
 
 	$header->content_type = 'text/html';
 	$dom = new DOM\HTML();
-	$dom->head->append('title', __NAMESPACE__);
+	$dom->head->append('title', TITLE);
 	$dom->body->append('a', null, [
 		'href' => '/'
 	])->append('img', null, [
-		'src' => '../images/sun.svg',
+		'src' => IMG_PATH . 'sun.svg',
 		'alt' => 'Kern Valley Sun homepage'
 	]);
 
@@ -107,16 +110,17 @@ try {
 	$form->append('button', 'Search', ['type' => 'submit]']);
 	unset($form);
 
-	$dom->body->append('h1', 'Read an E-Edition')->append('svg', null, [
+	$dom->body->append('h1', TITLE);
+
+	$dom->body->append('hr');
+	$dom->body->append('svg', null, [
 		'height'      => ICON_SIZE,
 		'width'       => ICON_SIZE,
 		'xmlns'       => 'http://www.w3.org/2000/svg',
 		'xmlns:xlink' => 'http://www.w3.org/1999/xlink'
 	])->append('use', null, [
-		'xlink:href' => '../images/icons.svg#book'
-	]);;
-
-	$dom->body->append('hr');
+		'xlink:href' => IMG_PATH . 'icons.svg#calendar'
+	]);
 
 	list_weeks($week, $dom->body);
 
