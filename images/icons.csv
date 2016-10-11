@@ -1,8 +1,8 @@
 alert,images/octicons/lib/svg/alert.svg
 book,images/octicons/lib/svg/book.svg
-bug,images/octicons/lib/svg/alert.svg
+bug,images/octicons/lib/svg/bug.svg
 calendar,images/octicons/lib/svg/calendar.svg
-check,images/octicons/lib/svg/alert.svg
+check,images/octicons/lib/svg/check.svg
 checklist,images/octicons/lib/svg/checklist.svg
 circle-slash,images/octicons/lib/svg/circle-slash.svg
 clippy,images/octicons/lib/svg/clippy.svg
