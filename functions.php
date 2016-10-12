@@ -7,17 +7,35 @@ URL: ThemePacific.com
 /*  Load ThemePacific FrameWork Assets
 /*==================================================================================*/
 
-		define('TPACIFIC_DIR', get_template_directory());
-		define('TPACIFIC_URI', get_template_directory_uri());	    
-		define('TPACIFIC_ADMIN', TPACIFIC_DIR . '/admin');
-		define('TPACIFIC_ADMINURI', TPACIFIC_URI . '/admin');          
-		define('TPACIFIC_JS', TPACIFIC_URI . '/js'); 
-		define('TPACIFIC_CSS', TPACIFIC_URI . '/css');
-		define('TPACIFIC_IMG', TPACIFIC_URI . '/images');
-  		define('TPACIFIC_WIDGET', TPACIFIC_ADMIN . '/widgets');
- 		include_once (TPACIFIC_ADMIN.'/index.php');
- 		$themename="bresponZive";
+define('TPACIFIC_DIR', get_template_directory());
+define('TPACIFIC_URI', get_template_directory_uri());
+define('TPACIFIC_ADMIN', TPACIFIC_DIR . '/admin');
+define('TPACIFIC_ADMINURI', TPACIFIC_URI . '/admin');
+define('TPACIFIC_JS', TPACIFIC_URI . '/js');
+define('TPACIFIC_CSS', TPACIFIC_URI . '/css');
+define('TPACIFIC_IMG', TPACIFIC_URI . '/images');
+define('TPACIFIC_WIDGET', TPACIFIC_ADMIN . '/widgets');
+include_once (TPACIFIC_ADMIN.'/index.php');
+$themename="bresponZive";
+const ALLOWED_AGENTS = array(
+	"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+	"Mozilla/5.0 (compatible; Googlebot/2.1)",
+	"Googlebot/2.1 (+http://www.googlebot.com/bot.html)",
+	"Googlebot/2.1 (+http://www.google.com/bot.html)",
+	"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+	"msnbot-media/1.1 (+http://search.msn.com/msnbot.htm)",
+	"Mozilla/5.0 (compatible; Yahoo! Slurp/3.0; http://help.yahoo.com/help/us/ysearch/slurp)",
+	"Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+	"SAMSUNG-SGH-E250/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)",
+	"DoCoMo/2.0 N905i(c100;TB;W24H16) (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html",
+	"Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+	"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+	"Twitterbot/1.0",
+	"Pinterest/0.2 (+http://www.pinterest.com/)",
+	"Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)"
+);
 
+const BLOCKED_AGENTS = array();
 
 
 /*===================================================================================*/
@@ -27,10 +45,10 @@ URL: ThemePacific.com
 /*-- Post thumbnail + Menu Support + Formats + Feeds --*/
 function bresponZive_themepacific_theme_support_image()
 {
- 
+
  		add_theme_support('post-thumbnails' );
 		add_image_size('mag-image', 340, 160,true);
- 		add_image_size('blog-image', 220, 180,true);		
+ 		add_image_size('blog-image', 220, 180,true);
 		add_image_size('sb-post-thumbnail', 70, 70,true);
 		add_image_size('sb-post-big-thumbnail', 365, 180,true);
 		add_theme_support( 'automatic-feed-links' );
@@ -40,7 +58,7 @@ function bresponZive_themepacific_theme_support_image()
  				'topNav' => __('Top Menu','bresponZive' ),
  				'mainNav' => __('Cat Menu','bresponZive' ),
 				'Restrict_menu' => __('Cat Menu','bresponZive' ),
-			)		
+			)
 		);
  }
  add_action( 'after_setup_theme', 'bresponZive_themepacific_theme_support_image' );
@@ -53,19 +71,19 @@ function bresponZive_themepacific_theme_support_image()
 function bresponZive_themepacific_tpcrn_scripts_method() {
 	if ( !is_admin() ) {
 		global $bresponZive_tpcrn_data;
-        wp_enqueue_style( 'style', get_stylesheet_uri());  		
+        wp_enqueue_style( 'style', get_stylesheet_uri());
  		wp_enqueue_style('camera', get_stylesheet_directory_uri().'/css/camera.css');
 		wp_enqueue_style('skeleton', get_stylesheet_directory_uri().'/css/skeleton.css');
-  
-  		wp_register_script('easing', get_template_directory_uri(). '/js/jquery.easing.1.3.js'); 
-  		wp_register_script('jquery.mobilemenu.min', get_template_directory_uri(). '/js/jquery.mobilemenu.min.js'); 
- 		wp_register_script('themepacific.script', get_template_directory_uri(). '/js/tpcrn_scripts.js', array('jquery'), '1.0', true); 	
- 		wp_register_script('camera', get_template_directory_uri(). '/js/camera.min.js',array('jquery'), '2.0',true); 		
-  		wp_register_script('jquery.mobile.customized.min', get_template_directory_uri(). '/js/jquery.mobile.customized.min.js',array('jquery'), '2.0',true); 
+
+  		wp_register_script('easing', get_template_directory_uri(). '/js/jquery.easing.1.3.js');
+  		wp_register_script('jquery.mobilemenu.min', get_template_directory_uri(). '/js/jquery.mobilemenu.min.js');
+ 		wp_register_script('themepacific.script', get_template_directory_uri(). '/js/tpcrn_scripts.js', array('jquery'), '1.0', true);
+ 		wp_register_script('camera', get_template_directory_uri(). '/js/camera.min.js',array('jquery'), '2.0',true);
+  		wp_register_script('jquery.mobile.customized.min', get_template_directory_uri(). '/js/jquery.mobile.customized.min.js',array('jquery'), '2.0',true);
 		   $protocol = is_ssl() ? 'https' : 'http';
 		$query_args = array(
 		   'family' => 'Oswald|Arimo|Open+Sans',
- 		  
+
 		);
 
 		wp_enqueue_style('google-webfonts',
@@ -73,18 +91,18 @@ function bresponZive_themepacific_tpcrn_scripts_method() {
         array(), null);
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('camera');
-		wp_enqueue_script('jquery.mobile.customized.min');			
-    	wp_enqueue_script('jquery-ui-widget');	
+		wp_enqueue_script('jquery.mobile.customized.min');
+    	wp_enqueue_script('jquery-ui-widget');
   		wp_enqueue_script('jquery.mobilemenu.min');
   		wp_enqueue_script('easing');
 		wp_enqueue_script('themepacific.script');
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
- 	
+
 	}
 
 }
- 
+
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  */
@@ -108,8 +126,8 @@ function bresponZive_themepacific_wp_title( $title, $sep ) {
 
 	return $title;
 }
-add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 ); 
- 
+add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 );
+
 
  /*-----------------------------------------------------------------------------------*/
 /* Register sidebars
@@ -123,7 +141,7 @@ add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 );
 		'before_title' => '<h3 class="widget-head">',
 		'after_title' => '</h3>',
 	));
-	
+
 	register_sidebar(array(
 		'name' => 'Magazine Style Widgets',
 		'before_widget' => '<div id="%1$s" class="%2$s blogposts-wrapper clearfix">',
@@ -131,8 +149,8 @@ add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 );
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
 	));
- 
-	
+
+
 	register_sidebar(array(
 		'name' => 'Footer Block 1',
 		'before_widget' => '<div id="%1$s" class="%2$s widget">',
@@ -140,7 +158,7 @@ add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 );
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	));
-	
+
 	register_sidebar(array(
 		'name' => 'Footer Block 2',
 		'before_widget' => '<div id="%1$s" class="%2$s widget">',
@@ -148,7 +166,7 @@ add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 );
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	));
-	
+
 	register_sidebar(array(
 		'name' => 'Footer Block 3',
 		'before_widget' => '<div id="%1$s" class="%2$s widget">',
@@ -165,12 +183,12 @@ add_filter( 'wp_title', 'bresponZive_themepacific_wp_title', 10, 2 );
 	));
 }
 add_action( 'widgets_init', 'bresponZive_themepacific_widgets_init' );
- 
- 
+
+
 /*-- Pagination --*/
 
 function bresponZive_themepacific_tpcrn_pagination() {
-	
+
 		global $wp_query;
 		$big = 999999999;
 		echo paginate_links( array(
@@ -183,9 +201,9 @@ function bresponZive_themepacific_tpcrn_pagination() {
 			'total' => $wp_query->max_num_pages )
 		);
 	}
- 
+
   /*-- Custom Excerpts--*/
- 
+
 function bresponZive_themepacific_custom_excerpt_length( $length ) {
 	return 15;
 }
@@ -194,19 +212,19 @@ function bresponZive_themepacific_new_excerpt_more( $more ) {
 	return '..';
 }
 add_filter('excerpt_more', 'bresponZive_themepacific_new_excerpt_more');
- 
+
 if (!isset( $content_width )) $content_width = 580;
  function bresponZive_themepacific_themepacific_breadcrumb() {
 	if (!is_home()) {
-	
+
 		echo '<ul id="tpcrn-breadcrumbs"><li><a href="'.esc_url(home_url()).'">Home &raquo;</a> </li>';
 		if (is_category() || is_single()) {
-			 
-$category = get_the_category(); 
+
+$category = get_the_category();
 $brecat_title = $category[0]-> cat_ID;
 $category_link = get_category_link($brecat_title);
 echo '<li><a id="" class="vca" href="'. esc_url( $category_link ) . '">' . $category[0]->cat_name . ' &raquo;</a></li>';
- 	 
+
 			if (is_single()) {
 				echo '<li class="current">';
 				the_title();
@@ -217,11 +235,11 @@ echo '<li><a id="" class="vca" href="'. esc_url( $category_link ) . '">' . $cate
 				the_title();
 				echo '</li>';
 		}
-	echo '</ul>'; 
+	echo '</ul>';
 	}
 }
 
-/*-- Multiple Page Nav--*/		
+/*-- Multiple Page Nav--*/
 
 function bresponZive_themepacific_single_split_page_links($defaults) {
 	$args = array(
@@ -232,32 +250,32 @@ function bresponZive_themepacific_single_split_page_links($defaults) {
 	$r = wp_parse_args($args, $defaults);
 	return $r;
 	}
- 
 
- 
+
+
 /*===================================================================================*/
 /*  Actions + Filters + Translation
 /*==================================================================================*/
 
- 
-/*-- Multiple Page Nav tweak --*/		
+
+/*-- Multiple Page Nav tweak --*/
 add_filter('wp_link_pages_args','bresponZive_themepacific_single_split_page_links');
- 
+
 /*-- Register and enqueue  javascripts--*/
 add_action('wp_enqueue_scripts', 'bresponZive_themepacific_tpcrn_scripts_method');
 add_action( 'bresponZive_themepacific_tpcrn_cre_def_call', 'bresponZive_themepacific_tpcrn_cre_def');
 
 
 
-  
+
  /*-- Breadcrumbs--*/
  function bresponZive_themepacific_breadcrumb() {
 	if (!is_home()) {
-	
+
 		echo '<ul id="tpcrn-breadcrumbs"><li><a href="'.esc_url(home_url()).'">Home &raquo;</a> </li>';
 		if (is_category() || is_single()) {
-		if ( !is_attachment() ) {	 
-$category = get_the_category(); 
+		if ( !is_attachment() ) {
+$category = get_the_category();
 $brecat_title = $category[0]-> cat_ID;
 $category_link = get_category_link($brecat_title);
 echo '<li><a class="vca" href="'. esc_url( $category_link ) . '">' . $category[0]->cat_name . ' &raquo;</a></li>';
@@ -272,7 +290,7 @@ echo '<li><a class="vca" href="'. esc_url( $category_link ) . '">' . $category[0
 				the_title();
 				echo '</li>';
 		}
-	echo '</ul>'; 
+	echo '</ul>';
 	}
 }
 
@@ -305,12 +323,12 @@ function bresponZive_themepacific_themepacific_comment( $comment, $args, $depth 
 				</div>
 				<!--comment avatar-->
 				<div class="comment-meta">
-					<?php	
+					<?php
 						printf( '%1$s  %2$s  ',
 							sprintf( '<div class="author">%s</div>', get_comment_author_link() ),
 							sprintf( '%4$s<a href="%1$s"><span class="time" style="border:none;">%3$s</span></a>',
 								esc_url( get_comment_link( $comment->comment_ID ) ),
-								get_comment_time( 'c' ),get_comment_date(),								
+								get_comment_time( 'c' ),get_comment_date(),
 								sprintf('<span class="time">%1$s </span>' ,   get_comment_time() )
 							)
 						);
@@ -324,15 +342,15 @@ function bresponZive_themepacific_themepacific_comment( $comment, $args, $depth 
 					<br />
 				<?php endif; ?>
 
- 
+
 			<div class="comment-content">
 				<?php comment_text(); ?>
 				<div class="reply">
 					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'bresponZive' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 				</div> <!--/reply -->
-			</div><!--/comment-content -->	
+			</div><!--/comment-content -->
 		</div>	<!--/Comment-wrapper -->
- 			 
+
  	<?php
 			break;
 	endswitch;
@@ -342,7 +360,7 @@ function bresponZive_themepacific_themepacific_comment( $comment, $args, $depth 
 function html_schema()
 {
     $schema = 'http://schema.org/';
- 
+
     // Is single post
     if(is_single())
     {
@@ -363,30 +381,14 @@ function html_schema()
     {
         $type = 'WebPage';
     }
- 
+
     echo 'itemscope="itemscope" itemtype="' . $schema . $type . '"';
 }
 
 function is_bot($uUserAgent)
 {
 	// Could use `REMOTE_ADDR` instead
-	$allowed_agents = array(
-						"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-						
-						"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)", 
-						
-						"Mozilla/5.0 (compatible; Yahoo! Slurp/3.0; http://help.yahoo.com/help/us/ysearch/slurp)",
-						
-						"Googlebot/2.1 (+http://www.google.com/bot.html)","SAMSUNG-SGH-E250/1.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 UP.Browser/6.2.3.3.c.1.101 (GUI) MMP/2.0 (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html)",
-						
-						"DoCoMo/2.0 N905i(c100;TB;W24H16) (compatible; Googlebot-Mobile/2.1; +http://www.google.com/bot.html",
-						
-						"Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-						
-						"Googlebot/2.1 (+http://www.googlebot.com/bot.html)"
-						
-						);
-	return in_array($uUserAgent, $allowed_agents);
+	return in_array($uUserAgent, ALLOWED_AGENTS);
 }
 function add_taxonomies_to_pages() {
  register_taxonomy_for_object_type( 'post_tag', 'page' );
@@ -394,5 +396,5 @@ function add_taxonomies_to_pages() {
  }
 add_action( 'init', 'add_taxonomies_to_pages' );
 
- 
+
 ?>
