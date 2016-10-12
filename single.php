@@ -8,6 +8,7 @@
 		$console->asErrorHandler();
 		$console->asExceptionHandler();
 	}
+	new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
 	$headers = \shgysk8zer0\Core\Headers::getInstance();
 	$url     = \shgysk8zer0\Core\URL::getInstance();
 

@@ -6,9 +6,55 @@ namespace KVSun\WP_E_Edition;
 use \shgysk8zer0\Core as Core;
 use \shgysk8zer0\DOM as DOM;
 
+const TITLE       = 'Read an E-Edtion';
+const ROOT        = __DIR__ . DIRECTORY_SEPARATOR . 'E-Editions';
+const PUB_DAY     = 'Wednesday';
+const DATE_KEY    = 'date';
+const ISSUE_KEY   = 'section';
+const SCAN_BACK   = 4;
+const ICON_SIZE   = 64;
+const IMG_PATH    = '../images/';
+// Date format for humans to read
+const OUT_FORM    = 'long';
+// Date format for internal/server user
+const IN_FORM     = 'week';
+const FORMATS     = array(
+	'week'   => 'Y-\WW',
+	'long'  => 'F j, Y'
+);
+
+
 ob_start();
 set_include_path(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'classes');
 spl_autoload_register('spl_autoload');
+
+function list_weeks(Week $week, DOM\HTMLElement $container, $scan = SCAN_BACK)
+{
+	$url = Core\URL::getInstance();
+	$scanner = $week->scan();
+	$weeks = 0;
+
+	while ($weeks++ < $scan) {
+		$details = $container->append('details');
+		$details->append('summary')->append('b', $week->format(FORMATS[OUT_FORM]));
+		$list = $details->append('ul');
+
+		foreach ($scanner as $file) {
+			$url->query = [
+				DATE_KEY    => $week->format(FORMATS[IN_FORM]),
+				ISSUE_KEY   => "$file"
+			];
+			$list->append('li')->append('a', $file, ['href' => "$url"] );
+		}
+		try {
+			$week->modify('-1 week');
+		} catch (\Exception $e) {
+			Core\Console::getInstance()->error($e->getMessage());
+			break;
+		}
+	}
+	$container->getElementsByTagName('details')->item(0)->open = 'true';
+}
 
 $console = Core\Console::getInstance();
 $console->asErrorHandler()->asExceptionHandler();
@@ -17,77 +63,71 @@ $timer = new Core\Timer();
 try {
 	$header = Core\Headers::getInstance();
 	$url    = Core\URL::getInstance();
+	$date   = new \DateTime(array_key_exists(DATE_KEY, $_GET) ? $_GET[DATE_KEY] : null);
 
-	$root = __DIR__ . DIRECTORY_SEPARATOR . 'E-Editions';
-
-	if (array_key_exists('section', $_GET)) {
-		if (array_key_exists('date', $_GET)) {
-			$week = new Week($root, $_GET['date']);
-		} else {
-			$week = new Week($root, 'Wednesday');
-			if ($week->getOffset() > time()) {
-				$week->modify('-1 week');
-			}
-		}
-
-		if (isset($week->{$_GET['section']})) {
-			$week->{$_GET['section']}->out();
-		} else {
-			trigger_error(
-				"No section '{$_GET['section']}' found for {$week->format('M j, Y')}."
-			);
-		}
-	} else {
-		$week = new Week($root, array_key_exists('date', $_GET) ? $_GET['date'] : 'Wednesday');
-		if ($week->getTimestamp() > time()) {
-			$week->modify('-1 week');
-		}
+	if ($date->format('l') !== PUB_DAY) {
+		$date->modify(PUB_DAY);
 	}
 
-	$scanner = $week->scan();
+	if ($date > new \DateTime()) {
+		$date->modify('-1 week');
+	}
+
+	$week = new Week(ROOT, $date->format($date::W3C));
+
+	if (array_key_exists(ISSUE_KEY, $_GET)) {
+		if (isset($week->{$_GET[ISSUE_KEY]})) {
+			$week->{$_GET[ISSUE_KEY]}->out();
+		} else {
+			trigger_error(
+				"No section '{$_GET[ISSUE_KEY]}' found for {$week->format(FORMATS[OUT_FORM])}."
+			);
+		}
+	}
 
 	$header->content_type = 'text/html';
 	$dom = new DOM\HTML();
-	$dom->head->append('title', __NAMESPACE__);
+	$dom->head->append('title', TITLE);
 	$dom->body->append('a', null, [
 		'href' => '/'
 	])->append('img', null, [
-		'src' => '/images/sun.svg',
+		'src' => IMG_PATH . 'sun.svg',
 		'alt' => 'Kern Valley Sun homepage'
 	]);
-	$dom->body->append('h1', 'Read an E-Edition')->append('svg', null, [
-		'height' => 64,
-		'width' => 64,
-		'xmlns' => 'http://www.w3.org/2000/svg',
-		'xmlns:xlink' => 'http://www.w3.org/1999/xlink'
-	])->append('use', null, [
-		'xlink:href' => '/images/icons.svg#book'
-	]);;
+
+	$form = $dom->body->append('form', null, ['name' => 'edition-date']);
+	$form->append('label', "Pick a week/year");
+	$form->append('input', null, [
+		'type'        => 'week',
+		'name'        => DATE_KEY,
+		'id'          => DATE_KEY,
+		'value'       => (new \DateTime())->format(FORMATS[IN_FORM]),
+		'placeholder' => 'YYYY-W##',
+		'required'    => '',
+		'autofocus'   => ''
+	]);
+	$form->append('br');
+	$form->append('button', 'Search', ['type' => 'submit]']);
+	unset($form);
+
+	$dom->body->append('h1', TITLE);
 
 	$dom->body->append('hr');
-	$list = $dom->body->append('ul');
+	$dom->body->append('svg', null, [
+		'height'      => ICON_SIZE,
+		'width'       => ICON_SIZE,
+		'xmlns'       => 'http://www.w3.org/2000/svg',
+		'xmlns:xlink' => 'http://www.w3.org/1999/xlink'
+	])->append('use', null, [
+		'xlink:href' => IMG_PATH . 'icons.svg#calendar'
+	]);
 
-	foreach ($scanner as $file) {
-		$url->query = [
-			'date' => $week->format('Y-m-d'),
-			'section' => "$file"
-		];
-		$list->append('li')->append(
-			'a',
-			"{$week->format('F j, Y')} | $file Section",
-			['href' => "$url"]
-		);
-	}
+	list_weeks($week, $dom->body);
 
-	$console->info($week);
-	$console->log("Loaded in $timer seconds.");
-
-	$console->sendLogHeader();
-	echo $dom;
+	exit($dom);
 } catch(\Exception $e) {
 	http_response_code($e->getCode());
 	$header->content_type = 'text/plain';
 	$console->error($e);
-	$console->sendLogHeader();
-	echo $e->getMessage();
+	exit($e->getMessage());
 }
