@@ -9,7 +9,6 @@
 		$console->asErrorHandler();
 		$console->asExceptionHandler();
 	}
-	new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
 
 	get_header();
 	if (!is_user_logged_in()) {

@@ -8,7 +8,6 @@
 		$console->asErrorHandler();
 		$console->asExceptionHandler();
 	}
-	new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
 	get_header();
 ?>
 <!-- #blocks-wrapper-->
