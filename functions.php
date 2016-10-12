@@ -32,7 +32,8 @@ const ALLOWED_AGENTS = array(
 	"facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
 	"Twitterbot/1.0",
 	"Pinterest/0.2 (+http://www.pinterest.com/)",
-	"Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)"
+	"Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)",
+	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google (+https://developers.google.com/+/web/snippet/)"
 );
 
 const BLOCKED_AGENTS = array();
