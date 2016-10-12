@@ -3,7 +3,7 @@
 	const E_EDITION = array(
 		'height' => 64,
 		'width'  => 64,
-		'href'   => '/e-edition/?date=2016-10-05',
+		'href'   => '/e-edition/',
 		'src'    => '/images/octicons/lib/svg/file-pdf.svg',
 		'alt'    => 'E-Edition'
 	);
