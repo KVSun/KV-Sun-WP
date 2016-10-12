@@ -33,10 +33,40 @@ const ALLOWED_AGENTS = array(
 	"Twitterbot/1.0",
 	"Pinterest/0.2 (+http://www.pinterest.com/)",
 	"Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)",
-	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google (+https://developers.google.com/+/web/snippet/)"
+	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:28.0) Gecko/20100101 Firefox/28.0 (FlipboardProxy/1.1; +http://flipboard.com/browserproxy)",
+	"Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)",
+	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/8.0.2 Safari/600.2.5 (Applebot/0.1; +http://www.apple.com/go/applebot)",
+	"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google (+https://developers.google.com/+/web/snippet/)",
+	"Google-AMPHTML",
+	"Googlebot-Image/1.0"
 );
 
-const BLOCKED_AGENTS = array();
+const BLOCKED_AGENTS = array(
+	"Mozilla/4.0 (compatible; crawlx, crawler@trd.overture.com)",
+	"Mozilla/5.0 Moreover/5.1 (+http://www.moreover.com; webmaster@moreover.com)",
+	"Pattern/1.0 +http://www.clips.ua.ac.be/pages/pattern",
+	"PHP/5.4.42",
+	"Scrapy/1.0.5.post4+g4b324a8 (+http://scrapy.org)",
+	"Mozilla/5.0 (compatible; linkdexbot/2.2; +http://www.linkdex.com/bots/)",
+	"TrapitAgent/0.1 (feed processor; +http://trapit.com/about)",
+	"Mozilla/5.0 (compatible; DomainAppender /1.0; +http://www.profound.net/domainappender)",
+	"alertmix crawler/1.0 (a news crawler; http://www.alertmix.com; admin+crawler@alertmix.com)",
+	"Brandpoint-Bot",
+	"newsusa",
+	"Mozilla/5.0 (compatible; Linux x86_64; Mail.RU_Bot/2.0; +http://go.mail.ru/help/robots)",
+	"omgili/0.5 +http://omgili.com",
+	"ScooperBot www.customscoop.com",
+	"M",
+	"LivelapBot/0.2 (http://site.livelap.com/crawler)",
+	"Mozilla/5.0 (TweetmemeBot/4.0; +http://datasift.com/bot.html) Gecko/20100101 Firefox/31.0",
+	"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0); 360Spider(compatible; HaosouSpider; http://www.haosou.com/help/help_3_2.html)",
+	"Screaming Frog SEO Spider/6.2",
+	"Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.majestic12.co.uk/bot.php?+)",
+	"Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)",
+	"Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
+	"Mozilla/5.0 Vienna/3.1.5",
+	"Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F70 Safari/600.1.4 (compatible; Laserlikebot/0.1)"
+);
 
 
 /*===================================================================================*/
