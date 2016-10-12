@@ -4,7 +4,7 @@
 /npm-debug.log
 *js.map
 *.orig
-/config/github.json
+/config/*.json
 /e-edition/E-Editions
 /images/icons.svg
 

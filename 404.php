@@ -9,6 +9,7 @@
 		$console->asExceptionHandler();
 		$console->info($_SERVER);
 	}
+	new \shgysk8zer0\Core\Tracker('tracker');
 
 	if (array_key_exists('REDIRECT_URL', $_SERVER)) {
 		require_once __DIR__ . DIRECTORY_SEPARATOR . 'url_map.php';
