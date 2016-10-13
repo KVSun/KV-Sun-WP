@@ -12,6 +12,14 @@ if (
 	exit();
 }
 
+if (
+	defined('\BLOCKED_IPS') and is_array(\BLOCKED_IPS)
+	and in_array($_SERVER['REMOTE_ADDR'], BLOCKED_IPS)
+) {
+	http_response_code(404);
+	exit();
+}
+
 function is_admin()
 {
 	return function_exists('is_user_logged_in') and is_user_logged_in()
@@ -19,4 +27,3 @@ function is_admin()
 }
 
 new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
-
