@@ -13,7 +13,7 @@
     "url": "https://chriszuber.com"
   },
   "contributors": [],
-  "homepage": "http://www.kernvalleysun.com",
+  "homepage": "https://kernvalleysun.com",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   },
   "engines": {
     "php": ">=5.6",
-    "npm": ">=3.5"
+    "npm": ">=4.2"
   },
   "scripts": {
     "build:css": "myth stylesheets/styles/import.css -c stylesheets/styles/styles.css",
@@ -35,9 +35,10 @@
     "lint:php": "php unit.php",
     "git:fetch": "git fetch --all --prune --tags",
     "git:submodules": "git submodule update --init --recursive",
-    "update": "npm run git:submodules && npm run git:fetch && npm run build:all",
-    "test": "npm run lint:php",
-    "postinstall": "npm run update"
+    "update-remote": "git submodule update --remote --init --recursive && npm update --save-dev",
+    "update-packages": "npm run git:submodules && npm run git:fetch && npm run build:all",
+    "test": "npm run lint:js && npm run lint:php",
+    "postinstall": "npm run update-packages"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
