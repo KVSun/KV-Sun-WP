@@ -68,6 +68,10 @@ const BLOCKED_AGENTS = array(
 	"Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F70 Safari/600.1.4 (compatible; Laserlikebot/0.1)"
 );
 
+const BLOCKED_IPS = array(
+	"52.9.25.56"
+);
+
 
 /*===================================================================================*/
 /* Theme Support
