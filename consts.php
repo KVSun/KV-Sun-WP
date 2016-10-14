@@ -62,11 +62,13 @@ const BLOCKED_AGENTS = array(
 	"Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)",
 	"Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
 	"Mozilla/5.0 Vienna/3.1.5",
-	"Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F70 Safari/600.1.4 (compatible; Laserlikebot/0.1)"
+	"Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12F70 Safari/600.1.4 (compatible; Laserlikebot/0.1)",
+	"Pattern/1.0 +http://www.clips.ua.ac.be/pages/pattern"
 );
 
 const BLOCKED_IPS = array(
-	"52.9.25.56"
+	'52.9.25.56',
+	'52.7.249.161'
 );
 
 const E_EDITION = array(
