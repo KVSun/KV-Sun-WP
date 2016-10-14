@@ -87,7 +87,7 @@
 							<div class="clear"></div>
 							<div style="display:none;" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 								<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-									<img itemprop="url" src="<?php echo get_template_directory_uri(); ?>/images/sun-icons/sun-logo.png" width="128" height="128"/>
+									<img itemprop="url" src="<?php echo get_template_directory_uri() . COMPANY_LOGO; ?>" width="128" height="128"/>
 									<meta itemprop="width" content="128">
 									<meta itemprop="height" content="128">
 								</div>
@@ -219,7 +219,7 @@
 					<div class="clear"></div>
 					<div style="display:none;" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 						<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-						<img itemprop="url" src="<?php echo get_template_directory_uri(); ?>/images/sun-icons/sun-logo.png" width="128" height="128"/>
+						<img itemprop="url" src="<?php echo get_template_directory_uri() . COMPANY_LOGO; ?>" width="128" height="128"/>
 						<meta itemprop="width" content="128">
 						<meta itemprop="height" content="128">
 						</div>
