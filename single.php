@@ -1,6 +1,8 @@
 <?php
-	namespace KVS;
+	namespace KVSun;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
+
+	begin_file(__FILE__);
 	if (DEBUG_MODE) {
 		ob_start();
 		$console = \shgysk8zer0\Core\Console::getInstance();
@@ -66,15 +68,9 @@
 								if(!empty($image['url'])) {
 							?>
 							<div class="img-post" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-								<?php
-									if( !empty($image) ){ ?>
-										<img itemprop="url" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-										<meta itemprop="width" content="800">
-										<meta itemprop="height" content="800">
-								<?php
-									}
-									//end image
-								?>
+									<img itemprop="url" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+									<meta itemprop="width" content="800">
+									<meta itemprop="height" content="800">
 								<p class="photo-cred" itemprop="author">Photo by <?php the_field('photo_credit');  // photo credit ?></p>
 								<p class="photo-title"><?php  the_field('photo_title');  // title ?></p>
 								<p class="photo-caption" itemprop="caption"><?php  the_field('caption'); // caption ?></p>
@@ -82,7 +78,7 @@
 							<!--  Photo box end -->
 							<?php } else { ?>
 									<div style="display:none;" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-										<img itemprop="url" src="<?php echo get_template_directory_uri(); ?>/images/default-image.png" alt="<?php echo get_template_directory_uri(); ?>/images/default-image.png" />
+										<img itemprop="url" src="<?php echo get_template_directory_uri() . DEFAULT_IMG; ?>" alt="" />
 										<meta itemprop="width" content="800">
 										<meta itemprop="height" content="800">
 									</div>
@@ -214,7 +210,7 @@
 			<!--  Photo box end -->
 			<?php } else { ?>
 			<div style="display:none;" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-			<img itemprop="url" src="<?php echo get_template_directory_uri(); ?>/images/default-image.png" alt="<?php echo get_template_directory_uri(); ?>/images/default-image.png" />
+			<img itemprop="url" src="<?php echo get_template_directory_uri() . DEFAULT_IMG; ?>" alt="<?php echo get_template_directory_uri() . DEFAULT_IMG; ?>" />
 			<meta itemprop="width" content="800">
 			<meta itemprop="height" content="800">
 			</div>
@@ -268,6 +264,7 @@
 
 	header('Location: ' .  wp_registration_url());
 }
+end_file(__FILE__);
 if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
 		$console->info(get_included_files());

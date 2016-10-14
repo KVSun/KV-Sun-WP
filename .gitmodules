@@ -28,3 +28,6 @@
 [submodule "classes/kvsun/wp_e_edition"]
 	path = classes/kvsun/wp_e_edition
 	url = git://github.com/KVSun/wp_e_edition.git
+[submodule "images/web-art"]
+	path = images/web-art
+	url = git://github.com/KVSun/web-art.git

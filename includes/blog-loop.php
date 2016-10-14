@@ -1,9 +1,13 @@
+<?php
+	namespace KVSun;
+	begin_file(__FILE__);
+?>
 		<div class="blog-lists-blog clearfix">
 			<div class="blogposts-wrapper clearfix">
 		<?php
 			$cat = trim($_SERVER['REQUEST_URI'], '/');
 			$cat = end(explode('/', $cat));
-			$query = new WP_Query( "category_name={$cat}" );
+			$query = new \WP_Query( "category_name={$cat}" );
 			\shgysk8zer0\Core\Console::getInstance()->log($query);
 			unset($cat);
 			if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
@@ -19,7 +23,7 @@
 							</a>
 						<?php } else { ?>
 							<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-								<img   src="<?php echo get_template_directory_uri(); ?>/images/default-image.png" width="60" height="60" alt="<?php the_title(); ?>" />
+								<img class="post-thumbnail" src="<?php echo get_template_directory_uri() . DEFAULT_IMG; ?>" width="60" height="60" alt="<?php the_title(); ?>" />
 							</a>
 						<?php } ?>
 					</div>
@@ -50,3 +54,4 @@
 		<div class="pagination clearfix">
 			<?php bresponZive_themepacific_tpcrn_pagination();?>
 		</div>
+<?php end_file(__FILE__);?>

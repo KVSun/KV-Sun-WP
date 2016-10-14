@@ -25,7 +25,7 @@ const FORMATS     = array(
 
 
 ob_start();
-require_once '../autoloader.php';
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 function list_weeks(Week $week, DOM\HTMLElement $container, $scan = SCAN_BACK)
 {
@@ -106,7 +106,14 @@ try {
 		'autofocus'   => ''
 	]);
 	$form->append('br');
-	$form->append('button', 'Search', ['type' => 'submit]']);
+	$form->append('button', null, ['type' => 'submit]'])->append('svg', null, [
+		'height'      => 32,
+		'width'       => 32,
+		'xmlns'       => 'http://www.w3.org/2000/svg',
+		'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
+	])->append('use', null, [
+		'xlink:href' => IMG_PATH . 'icons.svg#search'
+	]);
 	unset($form);
 
 	$dom->body->append('h1', TITLE);

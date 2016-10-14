@@ -1,6 +1,5 @@
 <?php
-namespace KVS;
-const OLD_URL_PATTERN = '/\/[A-z]_?[A-z\d-]+\.html$/';
+namespace KVSun;
 
 /**
  * Checks if URL matches URL pattern of old site

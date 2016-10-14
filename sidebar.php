@@ -1,12 +1,7 @@
 <?php
- 	namespace KVS\Sidebar;
-	const E_EDITION = array(
-		'height' => 64,
-		'width'  => 64,
-		'href'   => '/e-edition/',
-		'src'    => '/images/octicons/lib/svg/file-pdf.svg',
-		'alt'    => 'E-Edition'
-	);
+ 	namespace KVSun;
+
+    begin_file(__FILE__);
 
 	global $bresponZive_tpcrn_data;
 ?>

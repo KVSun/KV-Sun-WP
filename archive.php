@@ -1,5 +1,5 @@
 <?php
-	namespace KVS;
+	namespace KVSun;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 	if (DEBUG_MODE) {

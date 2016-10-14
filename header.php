@@ -1,7 +1,7 @@
 <?php
-	namespace KVS;
-	const MANIFEST = __DIR__ . DIRECTORY_SEPARATOR . 'manifest.json';
+	namespace KVSun;
 
+	begin_file(__FILE__);
 	$url = \shgysk8zer0\Core\URL::getInstance();
 ?>
 <!DOCTYPE html>
@@ -151,3 +151,4 @@
 </div>
 <?php }} ?>
 <div class="container-fluid clearfix"><div>
+<?php end_file(__FILE__);?>

@@ -1,6 +1,8 @@
 <?php
-	namespace KVS;
+	namespace KVSun;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
+
+	begin_file(__FILE__);
 	if (DEBUG_MODE) {
 		ob_start();
 		$console = \shgysk8zer0\Core\Console::getInstance();
@@ -34,7 +36,7 @@ $this_post = $post->ID;
 			  $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 			  $query_args = array('cat' => $cat_ID, 'paged' => $paged,'post__not_in' => array($this_post), 'posts_per_page' => 2, 'orderby' => 'date');
 			  // create a new instance of WP_Query
-			  $the_query = new WP_Query( $query_args );
+			  $the_query = new \WP_Query( $query_args );
 			 if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); // run the loop ?>
 		  		<!-- Post Wrap Start-->
 				<div class="post hentry ivycat-post">
@@ -134,6 +136,7 @@ $this_post = $post->ID;
 <?php
 	get_sidebar();
 	get_footer();
+	end_file(__FILE__);
 	if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
 		$console->info(get_included_files());
