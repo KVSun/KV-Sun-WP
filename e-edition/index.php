@@ -107,7 +107,14 @@ try {
 		'autofocus'   => ''
 	]);
 	$form->append('br');
-	$form->append('button', 'Search', ['type' => 'submit]']);
+	$form->append('button', null, ['type' => 'submit]'])->append('svg', null, [
+		'height'      => 32,
+		'width'       => 32,
+		'xmlns'       => 'http://www.w3.org/2000/svg',
+		'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
+	])->append('use', null, [
+		'xlink:href' => IMG_PATH . 'icons.svg#search'
+	]);
 	unset($form);
 
 	$dom->body->append('h1', TITLE);
