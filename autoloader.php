@@ -28,5 +28,3 @@ function is_admin()
 	return function_exists('is_user_logged_in') and is_user_logged_in()
 		and in_array('administrator', wp_get_current_user()->roles);
 }
-
-new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');

@@ -139,15 +139,17 @@
 } else if (!is_user_logged_in() && ! is_page( 'login' ) ) {
 	header('Location: '. wp_login_url( get_permalink()));
 	//wp_redirect( $return_url );
-} elseif(is_user_logged_in())
+} elseif(is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel())
 {
 	global $current_user;
+	$current_user->membership_level = pmpro_getMembershipLevelForUser($current_user->ID);
 	foreach((get_the_category()) as $cat) {
 		$categoryname = $cat->cat_name;
 		$categoryID = $cat->cat_ID;
 	}
 
-	if(true) {
+	if(!empty($current_user->membership_level->name)) {
+		$current_user->membership_level->name;
 
 		if (have_posts()) : while (have_posts()) :  the_post();
 
