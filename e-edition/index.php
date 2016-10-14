@@ -25,8 +25,7 @@ const FORMATS     = array(
 
 
 ob_start();
-set_include_path(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'classes');
-spl_autoload_register('spl_autoload');
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 function list_weeks(Week $week, DOM\HTMLElement $container, $scan = SCAN_BACK)
 {

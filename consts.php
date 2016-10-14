@@ -2,10 +2,11 @@
 namespace KVSun;
 const INCLUDE_PATH    = array('classes', 'config');
 const AUTOLOAD_FUNC   = 'spl_autoload';
-const DEFAULT_IMG = '/images/sun-icons/128.png';
+const DEFAULT_IMG     = '/images/sun-icons/128.png';
 const POSTS_PER_PAGE  = 5;
 const OLD_URL_PATTERN = '/\/[A-z]_?[A-z\d-]+\.html$/';
-const COMPANY_LOGO = '';
+const COMPANY_LOGO    = '';
+const MANIFEST        = __DIR__ . DIRECTORY_SEPARATOR . 'manifest.json';
 
 const CATEGORY_SLUGS = array(
 	'News'        => 'news',
@@ -75,3 +76,5 @@ const E_EDITION = array(
 	'src'    => '/images/octicons/lib/svg/file-pdf.svg',
 	'alt'    => 'E-Edition'
 );
+
+define(__NAMESPACE__ . '\DEBUG_MODE', is_admin() or $_SERVER['SERVER_ADDR'] === $_SERVER['REMOTE_ADDR']);

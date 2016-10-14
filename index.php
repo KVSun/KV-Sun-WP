@@ -1,6 +1,8 @@
 <?php
-	namespace KVS;
+	namespace KVSun;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
+
+	begin_file(__FILE__);
 
 	if (DEBUG_MODE) {
 		ob_start();
@@ -29,6 +31,7 @@
 <?php
 	get_sidebar();
 	get_footer();
+	end_file(__FILE__);
 	if (DEBUG_MODE) {
 		$console->log("Loaded in {$timer} ms.");
 		$console->info(get_included_files());

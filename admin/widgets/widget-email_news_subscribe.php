@@ -27,7 +27,7 @@ function bresponZive_themepacific_email_news_subscribe_widget()
  *
  * @since 0.1
  */
-class bresponZive_themepacific_news_subscribe_widget extends WP_Widget {
+class bresponZive_themepacific_news_subscribe_widget extends \WP_Widget {
 /**
 * Widget setup.
 */

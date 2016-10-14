@@ -1,3 +1,4 @@
+<?php namespace KVSun; begin_file(__FILE__);?>
 <div id="comments" class="clearfix  eleven columns ">
 	<?php if ( post_password_required() ) : ?>
 		<p class="nopassword"><?php _e('This post is password protected. Enter the password to view any comments.', 'bresponZive' ); ?></p>
@@ -70,3 +71,4 @@
 	comment_form($comment_form, $post->ID);
 ?>
 </div><!-- /comments -->
+<?php end_file(__FILE__);?>

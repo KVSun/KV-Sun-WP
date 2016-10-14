@@ -1,19 +1,22 @@
 <?php
-namespace KVS;
-set_include_path(__DIR__ . DIRECTORY_SEPARATOR . 'classes' . PATH_SEPARATOR . __DIR__ . DIRECTORY_SEPARATOR . 'config');
-spl_autoload_register('spl_autoload');
-define('DEBUG_MODE', is_admin());
+namespace KVSun;
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'consts.php';
+set_include_path(join(PATH_SEPARATOR, array_map(function($path)
+{
+	return __DIR__ . DIRECTORY_SEPARATOR . $path;
+}, INCLUDE_PATH)). PATH_SEPARATOR . get_include_path());
+spl_autoload_register(AUTOLOAD_FUNC);
 
 if (
-	defined('\BLOCKED_AGENTS') and is_array(\BLOCKED_AGENTS)
-	and in_array($_SERVER['HTTP_USER_AGENT'], \BLOCKED_AGENTS)
+	defined(__NAMESPACE__ . '\BLOCKED_AGENTS') and is_array(BLOCKED_AGENTS)
+	and in_array($_SERVER['HTTP_USER_AGENT'], BLOCKED_AGENTS)
 ) {
 	http_response_code(404);
 	exit();
 }
 
 if (
-	defined('\BLOCKED_IPS') and is_array(\BLOCKED_IPS)
+	defined(__NAMESPACE__ . '\BLOCKED_IPS') and is_array(BLOCKED_IPS)
 	and in_array($_SERVER['REMOTE_ADDR'], BLOCKED_IPS)
 ) {
 	http_response_code(404);

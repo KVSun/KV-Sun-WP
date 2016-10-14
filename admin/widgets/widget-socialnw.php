@@ -26,7 +26,7 @@ function bresponZive_themepacific_social_widget_box() {
  *
  * @since 0.1
  */
-class bresponZive_themepacific_social_widget extends WP_Widget {
+class bresponZive_themepacific_social_widget extends \WP_Widget {
 
 	function bresponZive_themepacific_social_widget() {
 		$widget_ops = array( 'classname' => 'tpcrn-social-icons-widget', 'description' => __('Display Social Icons', 'bresponZive') );
