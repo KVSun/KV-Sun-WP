@@ -34,13 +34,13 @@
  </div>
 <?php
 $image = get_the_post_thumbnail_url();
-if (isset($image) and $image !== '' ) { ?>
+if (isset($image) and trim($image) !== '' )  { \shgysk8zer0\Core\Console::getInstance()->log("'{$image}'"); ?>
 	<a itemprop="url" href="<?php  the_permalink(); ?>" title="<?php the_title(); ?>" class="post-thumbnail">
-		<img class="post-thumbnail" itemprop="image" style="background-image: url(<?=$image?>); background-repeat:no-repeat; background-size:contain;" alt=""  />
+		<img class="post-thumbnail" itemprop="image" src="<?=$image?>" alt=""  />
 	</a>
 <?php } else { ?>
 	<a itemprop="url" href="<?php  the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-		<img class="post-thumbnail" itemprop="image" style="background-image: url(<?=get_template_directory_uri() . DEFAULT_IMG; ?>);background-repeat:no-repeat; background-size:contain;" alt="<?php //the_title(); ?>" />
+		<img class="post-thumbnail" itemprop="image" src="<?=get_template_directory_uri() . DEFAULT_IMG; ?>" alt="" />
 	</a>
 <?php } ?>
 </div>
