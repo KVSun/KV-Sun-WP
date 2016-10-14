@@ -5,7 +5,7 @@ const AUTOLOAD_FUNC   = 'spl_autoload';
 const DEFAULT_IMG     = '/images/sun-icons/128.png';
 const POSTS_PER_PAGE  = 5;
 const OLD_URL_PATTERN = '/\/[A-z]_?[A-z\d-]+\.html$/';
-const COMPANY_LOGO    = '';
+const COMPANY_LOGO    = '/images/sun-icons/sun-logo.png';
 const MANIFEST        = __DIR__ . DIRECTORY_SEPARATOR . 'manifest.json';
 
 const CATEGORY_SLUGS = array(
