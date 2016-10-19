@@ -36,6 +36,8 @@ function is_admin()
 		and in_array('administrator', wp_get_current_user()->roles);
 }
 
+new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
+
 if (DEBUG_MODE) {
 	ob_start();
 	\shgysk8zer0\Core\Console::getInstance()->asErrorHandler()->asExceptionHandler();
