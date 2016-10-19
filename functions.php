@@ -7,6 +7,7 @@ URL: ThemePacific.com
 /*  Load ThemePacific FrameWork Assets
 /*==================================================================================*/
 
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 define('TPACIFIC_DIR', get_template_directory());
 define('TPACIFIC_URI', get_template_directory_uri());
 define('TPACIFIC_ADMIN', TPACIFIC_DIR . '/admin');
@@ -382,7 +383,7 @@ function html_schema()
 function is_bot($uUserAgent)
 {
 	// Could use `REMOTE_ADDR` instead
-	return in_array($uUserAgent, ALLOWED_AGENTS);
+	return in_array($uUserAgent, \KVSun\ALLOWED_AGENTS);
 }
 function add_taxonomies_to_pages() {
  register_taxonomy_for_object_type( 'post_tag', 'page' );
