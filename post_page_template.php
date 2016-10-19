@@ -3,13 +3,6 @@
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 	begin_file(__FILE__);
-	if (DEBUG_MODE) {
-		ob_start();
-		$console = \shgysk8zer0\Core\Console::getInstance();
-		$timer = new \shgysk8zer0\Core\Timer();
-		$console->asErrorHandler();
-		$console->asExceptionHandler();
-	}
 	get_header();
 ?>
 <!-- #blocks-wrapper-->
@@ -138,8 +131,7 @@ $this_post = $post->ID;
 	get_footer();
 	end_file(__FILE__);
 	if (DEBUG_MODE) {
-		$console->log("Loaded in {$timer} ms.");
-		$console->info(get_included_files());
+		$console = \shgysk8zer0\Core\Console::getInstance();
 		$console->sendLogHeader();
 	}
 ?>
