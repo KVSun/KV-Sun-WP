@@ -4,11 +4,10 @@
 	if (DEBUG_MODE) {
 		$timer = new \shgysk8zer0\Core\Timer();
 	}
-	new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
 
 	if (array_key_exists('REDIRECT_URL', $_SERVER)) {
 		require_once __DIR__ . DIRECTORY_SEPARATOR . 'url_map.php';
-		\KVS\redirect_check();
+		redirect_check();
 	}
 	get_header();
 ?>
