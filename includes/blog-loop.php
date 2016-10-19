@@ -8,7 +8,6 @@
 			$cat = trim($_SERVER['REQUEST_URI'], '/');
 			$cat = end(explode('/', $cat));
 			$query = new \WP_Query( "category_name={$cat}" );
-			\shgysk8zer0\Core\Console::getInstance()->log($query);
 			unset($cat);
 			if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
 		?>
@@ -17,6 +16,7 @@
 				<li class="full-left clearfix">
 					<div <?php post_class();?>>
 						<?php if ( has_post_thumbnail() ) { ?>
+							><?php\shgysk8zer0\Core\Console::getInstance()->log($post);?>
 							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="post-thumbnail">
 								<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'mag-image'); ?>
 								<img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"  />

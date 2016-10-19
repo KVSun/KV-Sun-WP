@@ -5,11 +5,7 @@
 	begin_file(__FILE__);
 
 	if (DEBUG_MODE) {
-		ob_start();
-		$console = \shgysk8zer0\Core\Console::getInstance();
 		$timer = new \shgysk8zer0\Core\Timer();
-		$console->asErrorHandler();
-		$console->asExceptionHandler();
 	}
 
 	get_header();
@@ -33,8 +29,7 @@
 	get_footer();
 	end_file(__FILE__);
 	if (DEBUG_MODE) {
-		$console->log("Loaded in {$timer} ms.");
-		$console->info(get_included_files());
-		$console->sendLogHeader();
+		\shgysk8zer0\Core\Console::getInstance()->log("Loaded in {$timer} ms.");
+		\shgysk8zer0\Core\Console::getInstance()->sendLogHeader();
 	}
 ?>

@@ -2,12 +2,7 @@
 	namespace KVSun;
 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 	if (DEBUG_MODE) {
-		ob_start();
-		$console = \shgysk8zer0\Core\Console::getInstance();
 		$timer = new \shgysk8zer0\Core\Timer();
-		$console->asErrorHandler();
-		$console->asExceptionHandler();
-		$console->info($_SERVER);
 	}
 	new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
 
@@ -36,6 +31,8 @@
 	get_sidebar();
 	get_footer();
 	if (DEBUG_MODE) {
+		$console = \shgysk8zer0\Core\Console::getInstance();
+		$console->info($_SERVER);
 		$console->log("Loaded in {$timer} ms.");
 		$console->sendLogHeader();
 	}

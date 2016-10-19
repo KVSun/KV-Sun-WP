@@ -34,7 +34,7 @@
  </div>
 <?php
 $image = get_the_post_thumbnail_url();
-if (isset($image) and trim($image) !== '' )  { \shgysk8zer0\Core\Console::getInstance()->log("'{$image}'"); ?>
+if (isset($image) and trim($image) !== '' )  {  ?>
 	<a itemprop="url" href="<?php  the_permalink(); ?>" title="<?php the_title(); ?>" class="post-thumbnail">
 		<img class="post-thumbnail" itemprop="image" src="<?=$image?>" alt=""  />
 	</a>
