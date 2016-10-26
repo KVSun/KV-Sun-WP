@@ -1,0 +1,5 @@
+:root {
+	--col-width: 200px;
+	--col-gap: 3em;
+	--col-rule: 5px dashed #333;
+}

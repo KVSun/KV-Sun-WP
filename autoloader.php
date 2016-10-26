@@ -1,6 +1,13 @@
 <?php
 namespace KVSun;
 
+if (! array_key_exists('SERVER_ADDR', $_SERVER)) {
+	$_SERVER['SERVER_ADDR'] = 'localhost';
+}
+if (! array_key_exists('REMOTE_ADDR', $_SERVER)) {
+	$_SERVER['REMOTE_ADDR'] = $_SERVER['SERVER_ADDR'];
+}
+
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'consts.php';
 
 if (defined(__NAMESPACE__ . '\INCLUDE_PATH') and is_array(INCLUDE_PATH)) {
@@ -36,9 +43,10 @@ function is_admin()
 		and in_array('administrator', wp_get_current_user()->roles);
 }
 
-new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
-
 if (DEBUG_MODE) {
 	ob_start();
 	\shgysk8zer0\Core\Console::getInstance()->asErrorHandler()->asExceptionHandler();
+} elseif (file_exists('tracker.json')) {
+	new \shgysk8zer0\Core\Tracker('tracker', 'kernvalleysun');
 }
+

@@ -31,3 +31,6 @@
 [submodule "images/web-art"]
 	path = images/web-art
 	url = git://github.com/KVSun/web-art.git
+[submodule "classes/kvsun/classifieds"]
+	path = classes/kvsun/classifieds
+	url = git://github.com/KVSun/classifieds.git
