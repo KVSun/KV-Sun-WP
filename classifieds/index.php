@@ -30,7 +30,7 @@ function build_classifieds(Array $files, DOM\HTMLElement $container, CSV $csv)
 		foreach ($csv as $ad) {
 			if ((int)$ad['Category Code'] === (int)$cat) {
 				$details->append('img', null, [
-					'src' => '/' . IMG_PATH . "/{$ad['Filename']}",
+					'src' => IMG_PATH . "/{$ad['Filename']}",
 					'alt' => htmlentities($ad['Ad Text']),
 					'title' => htmlentities($ad['Ad Text']),
 					'class' => 'ad'
