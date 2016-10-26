@@ -16,7 +16,6 @@
 				<li class="full-left clearfix">
 					<div <?php post_class();?>>
 						<?php if ( has_post_thumbnail() ) { ?>
-							><?php\shgysk8zer0\Core\Console::getInstance()->log($post);?>
 							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="post-thumbnail">
 								<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'mag-image'); ?>
 								<img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>"  />
