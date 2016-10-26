@@ -7,6 +7,7 @@
 *.lnk
 /config/*.json
 /e-edition/E-Editions
+/classifieds/current
 /images/icons.svg
 
 #################
