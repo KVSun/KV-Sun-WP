@@ -5,7 +5,7 @@ if (! array_key_exists('SERVER_ADDR', $_SERVER)) {
 	$_SERVER['SERVER_ADDR'] = 'localhost';
 }
 if (! array_key_exists('REMOTE_ADDR', $_SERVER)) {
-	$_SERVER['REMOTE_ADDR'] = $_SERVER['SERVER_ADDR']
+	$_SERVER['REMOTE_ADDR'] = $_SERVER['SERVER_ADDR'];
 }
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'consts.php';
