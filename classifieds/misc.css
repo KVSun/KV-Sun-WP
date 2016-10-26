@@ -1,0 +1,18 @@
+* {
+	max-width: 100%;
+}
+summary {
+	cursor: pointer;
+	text-transform: capitalize;
+}
+img.add {
+	max-width: calc(100% / 6);
+}
+.classified-list {
+	-moz-column-gap: 3em;
+	-webkit-column-gap: 3em;
+	column-gap: 3em;
+	-moz-column-rule: 5px dashed #333;
+	-webkit-column-rule: 5px dashed #333;
+	column-rule: 5px dashed #333;
+}
