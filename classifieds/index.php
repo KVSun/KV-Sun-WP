@@ -52,20 +52,11 @@ $csv = new CSV(__DIR__ . DIRECTORY_SEPARATOR . IMG_PATH . DIRECTORY_SEPARATOR . 
 $dom = DOM\HTML::getInstance();
 $dom->head->append('title', 'Classifieds');
 $dom->body->append('link', null, ['rel' => 'stylesheet', 'href' => 'import.css']);
-$dom->head->append('script', null, [
-	'src' => 'functions.js',
-	'type' => 'application/javascript',
-	'async' => ''
-]);
-$header = $dom->body->append('header');
-$header->append('h1', 'Classifieds');
-$header->append('button', 'Cols +', ['id' => 'cols-plus']);
-$header->append('button', 'Cols -', ['id' => 'cols-minus']);
+$dom->body->append('h1', 'Classifieds');
 
 build_classifieds($classifieds, $dom->body->append('div', null, [
 	'class' => 'classified-list',
-	'id' => 'classifieds',
-	'data-cols' => COLS
+	'id' => 'classifieds'
 ]), $csv);
 
 exit($dom);
