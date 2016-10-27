@@ -8,6 +8,7 @@ const BASE = __DIR__;
 const COLS = 5;
 const IMG_PATH = 'current' . DIRECTORY_SEPARATOR . '01 Current Graphics';
 const ALLOWED_TAGS = '<b><p><div><br><hr>';
+const DISP_AD_PATTERN = '/^\s*\*+\s*DISPLAY\s+AD\s*\*+/i';
 const EXT = '.html';
 
 ini_set('auto_detect_line_endings', true);
@@ -38,8 +39,15 @@ function build_classifieds(Array $files, DOM\HTMLElement $container, CSV $csv)
 			}
 			$details->append('br');
 		}
+
+
 		foreach($details->getElementsByTagName('div') as $div) {
-			unset($div->align);
+			$title = $div->getElementsByTagName('b')[0];
+			if (isset($title) and preg_match(DISP_AD_PATTERN, $title->textContent)) {
+				$details->removeChild($div);
+			} else {
+				unset($div->align);
+			}
 		}
 	}
 }
@@ -60,5 +68,9 @@ build_classifieds($classifieds, $dom->body->append('div', null, [
 	'class' => 'classified-list',
 	'id' => 'classifieds'
 ]), $csv);
+
+if (isset($console)) {
+	$console->sendLogHeader();
+}
 
 exit($dom);
