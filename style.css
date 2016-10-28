@@ -211,6 +211,22 @@ ul.large li {
 li p {
 	line-height: 23px;
 }
+button, [role="button"], input[type="submit"], input[type="reset"] {
+	display: inline-block;
+	min-height: 1em;
+	padding: 0.4em;
+	margin: 0 0.2em;
+	background-color: #06AFE4;
+	color: #efefef;
+	font-weight: bold;
+	font-size: 110%;
+	border: 1px solid #555;
+	border-radius: 0.8em;
+}
+button:hover, [role="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+	background-color: #212326;
+	color: #efefef;
+}
 dl {
 	margin: 0 0 20px 5px;
 }
