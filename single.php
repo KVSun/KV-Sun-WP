@@ -1,7 +1,8 @@
 <?php
 	namespace KVSun;
-	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 
+	use \shgysk8zer0\ShareAPI as Share;
+	require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 	begin_file(__FILE__);
 	if (DEBUG_MODE) {
 		ob_start();
@@ -139,6 +140,7 @@
 } elseif(is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel())
 {
 	global $current_user;
+	get_header();
 	$current_user->membership_level = pmpro_getMembershipLevelForUser($current_user->ID);
 	foreach((get_the_category()) as $cat) {
 		$categoryname = $cat->cat_name;
@@ -151,10 +153,7 @@
 		if (have_posts()) : while (have_posts()) :  the_post();
 
 ?>
-<?php get_header(); ?>
 <!-- #blocks-wrapper-->
-
-
 <div id="blocks-wrapper" class="clearfix" itemprop="mainEntityOfPage">
 	<!-- /blocks Left -or -right -->
 	<div id="blocks-left" <?php post_class('eleven columns');?>>
@@ -246,8 +245,16 @@
 				<div class="next"><?php next_post_link('%link', __( '<span>Next: </span> %title', 'bresponZive' ) ); ?></div>
 				</div>
 				<!-- /single-navigation-->
-			<?php } } ?>
-			<?php comments_template(); ?>
+			<?php
+				} }
+			?>
+			<a role="button" class="social-share" href="<?=new Share\Facebook(get_permalink())?>" target="_blank">Share on Facebook</a>
+			<a role="button" class="social-share" href="<?=new Share\Twitter(get_permalink())?>" target="_blank">Share on Twitter</a>
+			<a role="button" class="social-share" href="<?=new Share\GooglePlus(get_permalink())?>" target="_blank">Share on Google+</a>
+			<a role="button" class="social-share" href="<?=new Share\Reddit(get_permalink())?>" target="_blank">Share on Reddit</a>
+			<?php
+				comments_template();
+			?>
 			</div>
 			<!-- /blocks Left-->
 <?php
