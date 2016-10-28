@@ -247,14 +247,14 @@
 				<!-- /single-navigation-->
 			<?php
 				} }
-
-
+			?>
+			<a role="button" class="social-share" href="<?=new Share\Facebook(get_permalink())?>" target="_blank">Share on Facebook</a>
+			<a role="button" class="social-share" href="<?=new Share\Twitter(get_permalink())?>" target="_blank">Share on Twitter</a>
+			<a role="button" class="social-share" href="<?=new Share\GooglePlus(get_permalink())?>" target="_blank">Share on Google+</a>
+			<a role="button" class="social-share" href="<?=new Share\Reddit(get_permalink())?>" target="_blank">Share on Reddit</a>
+			<?php
 				comments_template();
 			?>
-				<a href="<?=new Share\Facebook(get_permalink())?>" target="_blank">Share on Facebook</a>
-				<a href="<?=new Share\Twitter(get_permalink())?>" target="_blank">Share on Twitter</a>
-				<a href="<?=new Share\GooglePlus(get_permalink())?>" target="_blank">Share on Google+</a>
-				<a href="<?=new Share\Reddit(get_permalink())?>" target="_blank">Share on Reddit</a>
 			</div>
 			<!-- /blocks Left-->
 <?php
