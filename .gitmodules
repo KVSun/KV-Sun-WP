@@ -37,3 +37,6 @@
 [submodule "classes/shgysk8zer0/shareapi"]
 	path = classes/shgysk8zer0/shareapi
 	url = git://github.com/shgysk8zer0/shareapi.git
+[submodule "classes/shgysk8zer0/curl"]
+	path = classes/shgysk8zer0/curl
+	url = git://github.com/shgysk8zer0/curl.git
