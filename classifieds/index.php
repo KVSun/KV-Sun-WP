@@ -16,9 +16,11 @@ ini_set('auto_detect_line_endings', true);
 error_reporting(0);
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'autoloader.php';
-$console = \shgysk8zer0\Core\Console::getInstance();
-$console->asErrorHandler();
-$console->asExceptionHandler();
+if ($_SERVER['SERVER_NAME'] === 'localhost') {
+	$console = \shgysk8zer0\Core\Console::getInstance();
+	$console->asErrorHandler();
+	$console->asExceptionHandler();
+}
 
 function build_classifieds(Array $files, DOM\HTMLElement $container, CSV $csv)
 {
