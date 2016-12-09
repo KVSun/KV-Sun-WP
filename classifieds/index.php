@@ -76,6 +76,8 @@ $dom->head->append('title', 'Classifieds');
 $dom->body->append('link', null, ['rel' => 'stylesheet', 'href' => 'import.css']);
 $dom->body->append('h1', 'Classifieds');
 
+$dom->body->append('p')->append('b', 'Click on a category to show its entries.');
+
 build_classifieds($classifieds, $dom->body->append('div', null, [
 	'class' => 'classified-list',
 	'id' => 'classifieds'
