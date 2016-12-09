@@ -10,14 +10,24 @@ const IMG_PATH = 'current' . DIRECTORY_SEPARATOR . '01 Current Graphics';
 const ALLOWED_TAGS = '<b><p><div><br><hr>';
 const DISP_AD_PATTERN = '/^\s*\*+\s*DISPLAY\s+AD\s*\*+/i';
 const EXT = '.html';
+const CSV_FEED = 'display ad feed.5.1.csv';
 
 ini_set('auto_detect_line_endings', true);
 error_reporting(0);
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'autoloader.php';
+$console = \shgysk8zer0\Core\Console::getInstance();
+$console->asErrorHandler();
+$console->asExceptionHandler();
 
 function build_classifieds(Array $files, DOM\HTMLElement $container, CSV $csv)
 {
+	$csv = array_filter($csv->getArrayCopy(), function($row)
+	{
+		$now = new \DateTime();
+		return $now >= new \DateTime($row['Start Date']) and $now <= new \DateTime($row['End Date']);
+	});
+	\shgysk8zer0\Core\Console::getInstance()->table($csv);
 	foreach ($files as $file) {
 		$cat = basename($file, EXT);
 		if (!is_numeric($cat) or ! array_key_exists($cat, Codes::CATEGORIES)) continue;
@@ -58,7 +68,7 @@ if (defined('KVSun\DEBUG_MODE') and \KVSun\DEBUG_MODE) {
 $header = Core\Headers::getInstance();
 
 $classifieds = glob('current' . DIRECTORY_SEPARATOR . '*' . EXT);
-$csv = new CSV(__DIR__ . DIRECTORY_SEPARATOR . IMG_PATH . DIRECTORY_SEPARATOR . 'display ad feed.5.1.csv');
+$csv = new CSV(__DIR__ . DIRECTORY_SEPARATOR . IMG_PATH . DIRECTORY_SEPARATOR . CSV_FEED);
 $dom = DOM\HTML::getInstance();
 $dom->head->append('title', 'Classifieds');
 $dom->body->append('link', null, ['rel' => 'stylesheet', 'href' => 'import.css']);
